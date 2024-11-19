@@ -1,0 +1,228 @@
+﻿@page "/Customers/ViewInforFreelancer/{Status}/{userId}"
+@model Web.Pages.Customers.ViewInforFreelancerModel
+@{
+}
+<style>
+    .disabled-btn {
+        pointer-events: none;
+        opacity: 0.6;
+    }
+</style>
+<div class="container-fluid published-recuitment-wrapper">
+    <div class="container published-recuitment-content">
+        <div class="row">
+            <div class="col-md-8 col-sm-12 col-12 recuitment-inner">
+                <div class="accordion" id="accordionExample">
+                    @if (Model.Status == "Done")
+                    {
+                        <div class="card recuitment-card">
+                            <div class="card-header recuitment-card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <a class="btn btn-link btn-block text-left recuitment-header" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Thông tin tài khoản
+                                        <span id="clickc1_advance2" class="clicksd">
+                                            <i class="fa fa fa-angle-up"></i>
+                                        </span>
+                                    </a>
+                                </h2>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body recuitment-body row">
+                                    <div class="col-md-3">
+                                        <div class="avatar-upload">
+                                            <div class="avatar-preview">
+                                                <div id="imagePreview" style="background-image: url('@Url.Content(Model.infor.Avatar)');">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Họ tên</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Nhập họ và tên"
+                                                       value="@Model.infor.FullName" required disabled>
+                                                <input type="text" name="userid" class="form-control"
+                                                       value="@Model.infor.UserId" hidden>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Số điện thoại</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="phonenumber" name="phonenumber" class="form-control"
+                                                       value="@Model.infor.PhoneNumber" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Email</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" name="email" class="form-control" value="@Model.infor.Email" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Ngày sinh</label>
+                                            <div class="col-sm-9">
+                                                <input type="date" id="date" name="date" class="form-control" value="@Model.infor.Dob.ToString("yyyy-MM-dd")" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Biệt danh</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="skype" name="skype" class="form-control" value="@Model.infor.Skype" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Chỗ ở hiện tại</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="address" name="address" class="form-control" placeholder="Nhập địa chỉ"
+                                                       value="@Model.infor.Address" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Link facebook</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="flink" name="flink" class="form-control" placeholder="Nhập link facebook"
+                                                       value="@Model.infor.FacebookLink" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Link liên hệ khác</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="olink" name="olink" class="form-control"
+                                                       value="@Model.infor.OtherLink" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="card recuitment-card">
+                        <div class="card-header recuitment-card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <a class="btn btn-link btn-block text-left collapsed recuitment-header" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    File đính kèm
+                                    <span id="clickc1_advance3" class="clicksd">
+                                        <i class="fa fa fa-angle-up"></i>
+                                    </span>
+                                </a>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body recuitment-body">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label text-right label">Xem hồ sơ</label>
+                                    <div class="col-sm-9">
+                                            <a id="viewSavedFile" href="@Url.Content(Model.infor.UserCVImg)" target="_blank">Xem file</a>
+                                        <!-- jQuery lấy tên file -->
+                                        <script>
+                                            $(document).ready(function () {
+                                                $('.recuitment-card-acttachment').change(function (e) {
+                                                    // Kiểm tra nếu thẻ #viewSavedFile không tồn tại hoặc không có href (người dùng lần đầu cập nhật file)
+                                                    var viewSavedFile = $('#viewSavedFile');
+                                                    if (!viewSavedFile.length || !viewSavedFile.attr('href')) {
+                                                        var file = e.target.files[0];
+                                                        var fileName = file.name;
+
+                                                        // Tạo URL tạm thời cho file
+                                                        var fileURL = URL.createObjectURL(file);
+
+                                                        // Cập nhật nội dung cho tên file và gán URL vào link
+                                                        $("#previewFileName").html('<a href="' + fileURL + '" target="_blank">' + fileName + '</a>');
+
+                                                        // Hiển thị biểu tượng hoặc thay đổi giao diện theo yêu cầu
+                                                        $(".output-file").append('<style>.output-file:before{display:inline-block !important;}</style>');
+                                                    }
+                                                });
+                                            });
+
+                                            $(document).ready(function () {
+                                                $('.recuitment-card-acttachment').change(function (e) {
+                                                    var file = e.target.files[0];
+
+                                                    // Kiểm tra nếu file là PDF
+                                                    if (file && file.type === "application/pdf") {
+                                                        var fileName = file.name;
+                                                        var fileURL = URL.createObjectURL(file); // Tạo URL tạm thời cho file mới
+
+                                                        // Cập nhật link để xem file mới
+                                                        $('#viewSavedFile')
+                                                            .attr('href', fileURL)
+                                                            .text("Xem file mới: " + fileName);
+                                                    } else {
+                                                        alert("Vui lòng chọn tệp PDF!");
+                                                        $(this).val(''); // Reset input nếu không phải file PDF
+                                                    }
+                                                });
+                                            });
+                                        </script>
+                                        <p class="output-file">
+                                            <span id="previewFileName"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card recuitment-card">
+                        <div class="card-header recuitment-card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <a class="btn btn-link btn-block text-left collapsed recuitment-header" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Thông tin chung
+                                    <span id="clickc1_advance1" class="clicksd">
+                                        <i class="fa fa fa-angle-up"></i>
+                                    </span>
+                                </a>
+                            </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="card-body recuitment-body">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label text-right label">Chức danh</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="shortIntro" class="form-control" name="professionaltitle"
+                                              value="@Model.infor.ProfessionalTitle" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label text-right label">Giới thiệu bản thân<span style="color: red" class="pl-2">*</span></label>
+                                    <div class="col-sm-9">
+                                        <textarea id="fullIntro" class="form-control" name="introdution"
+                                                  rows="5" disabled>@Model.infor.Introdution</textarea>                                     
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label text-right label">Link website cá nhân</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="personalLink" name="websiteurl" class="form-control" value="@Model.infor.WebsiteUrl"
+                                        disabled/>                                                                                   
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label text-right label">Trình độ cao nhất</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="personalLink" name="websiteurl" class="form-control" value="@Model.infor.Level"
+                                        disabled/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label text-right label">Lĩnh vực</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="personalLink" name="websiteurl" class="form-control" value="@Model.infor.FieldName" 
+                                        disabled/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label text-right label">Kỹ năng chính</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="skills" name="skill" class="form-control" value="@Model.infor.Skill" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

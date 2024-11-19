@@ -1,0 +1,308 @@
+﻿@using BusinessObjects.DTO
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@using BusinessObjects.Models
+@using System.Text.Json
+@using System.Security.Claims
+@using Microsoft.EntityFrameworkCore
+@inject MyDbContext _context
+@{
+    var user = HttpContextAccessor.HttpContext.User;
+    AccountDTO acc = null;
+
+    if (user.Identity.IsAuthenticated)
+    {
+        var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+        var username = user.FindFirstValue(ClaimTypes.Name);
+        var role = user.FindFirstValue(ClaimTypes.Role); // Nếu bạn lưu vai trò trong Claims
+        var userProfile = await _context.ApplicationUserProfiles
+                                         .FirstOrDefaultAsync(p => p.UserId == Guid.Parse(userId));
+        acc = new AccountDTO()
+                {
+                    Id = Guid.Parse(userId), // Chuyển đổi ID sang Guid
+                    username = username,
+                    role = role,
+                    fullname = (userProfile!=null)?userProfile.FullName:"" // Bạn có thể lấy fullname từ profile nếu cần
+                };
+    }
+    var fields = _context.Fields.ToList();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="~/img/Bytebiz.png">
+    <title>ByteBiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Roboto Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&display=swap" rel="stylesheet">
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+
+
+
+    <!-- Font Awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!-- select 2 css -->
+    <link rel="stylesheet" href="~/css/select2.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- main css -->
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+</head>
+<body>
+    <he     ader>
+        <!-- main nav -->
+        <div class="container-fluid fluid-nav another-page">
+            <div class="container cnt-tnar">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light tjnav-bar">
+                    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+                    <a href="/Customs/Home" class="nav-logo">
+                        <img src="~/img/Bytebiz.png">
+                    </a>
+                    <button class="navbar-toggler tnavbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <!-- <span class="navbar-toggler-icon"></span> -->
+                        <i class="fa fa-bars icn-res" aria-hidden="true"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto tnav-left tn-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Customs/SearchJob">Việc Làm Freelancer</a>
+                            </li>
+                            @if (acc != null && acc.role == "Customer")
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Dự án
+                                    </a>
+                                    <div class="dropdown-menu tdropdown" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/Customers/ViewListProject/Hiring">Đang chờ báo giá</a>
+                                        <a class="dropdown-item" href="/Customers/ViewListProject/Wating">Đang chờ chọn người làm</a>
+                                        <a class="dropdown-item" href="/Customers/ViewListProject/Done">Đã chọn người làm</a>
+                                        <a class="dropdown-item" href="/Customers/ViewListProject/Cancel">Đã đóng</a>
+                                    </div>
+                                </li>
+                            }  
+                            @if (acc != null && acc.role == "Freelancer")
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Dự án
+                                    </a>
+                                    <div class="dropdown-menu tdropdown" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/Freelancers/ViewListProject/Hiring">Đang báo giá</a>
+                                        <a class="dropdown-item" href="/Freelancers/ViewListProject/Wating">Đang chờ xét tuyển</a>
+                                        <a class="dropdown-item" href="/Freelancers/ViewListProject/Refuse">Đã bị từ chối</a>
+                                        <a class="dropdown-item" href="/Freelancers/ViewListProject/Done">Đã được lựa chọn</a>                                   
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                        <ul class="navbar-nav mr-auto my-2 my-lg-0 tnav-right tn-nav"> 
+                            @if(acc==null){
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-page="/Accounts/Register">Đăng Ký</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-page="/Accounts/Login">Đăng Nhập</a>
+                                </li>
+                            }
+                            @if(acc!=null){
+                                if (acc.fullname != "")
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link btn-employers" href="/Customs/Profile" tabindex="-1" aria-disabled="true" style="color: #fff!important">@acc.fullname</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link btn-employers" href="/Customs/Profile" tabindex="-1" aria-disabled="true" style="color: #fff!important">@acc.username</a>
+                                    </li>
+                                }
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Accounts/Logout">Đăng xuất</a>
+                                </li>
+                            }                           
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- (end) main nav -->
+
+        <div class="clearfix"></div>
+
+        <!-- recuiter Nav -->
+        <nav class="navbar navbar-expand-lg navbar-light nav-recuitment">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNava" aria-controls="navbarNava" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse container" id="navbarNava">
+                <ul class="navbar-nav nav-recuitment-li">
+                    @if (acc != null && acc.role != "Admin")
+                    {
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/UpdateFeature">Quản lý thông báo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/UpdateFeature">Nâng cấp tài khoản</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Customs/Profile">Quản lý hồ sơ</a>
+                        </li>
+                    }                  
+                    @if (acc != null && acc.role == "Freelancer")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Freelancers/CV">CV của tôi</a>
+                        </li>
+                    }
+                    @if (acc != null && acc.role == "Admin")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Admins/ManageUser">Quản lý người dùng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Admins/ManageProject">Xem danh sách dự án</a>
+                        </li>
+                    }
+                </ul>
+                <ul class="rec-nav-right">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Customs/SearchJob">Tìm việc làm</a>
+                    </li>                  
+                    @if (acc!=null&&acc.role == "Customer")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Customers/PostProject">Đăng tuyển</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </nav>
+        <!--  recuiter Nav -->
+        <!-- widget recuitment  -->
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="home-ads">
+                            <a href="#">
+                                <img src="~/img/qc1.jpg">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </he>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer >
+        <div class="container-fluid footer-wrap  clear-left clear-right">
+            <div class="container footer">
+                <div class="row">
+                    <div class="col-md-4 col-sm-8 col-12">
+                        <h2 class="footer-heading">
+                            <span>Về chúng tôi</span>
+                        </h2>
+                        <p class="footer-content">
+                            BYTEBIZ là nền tảng trực tuyến kết nối những người làm việc tự do (freelancers) với các doanh nghiệp và cá nhân có nhu cầu thuê dịch vụ. Hướng đến việc trở thành nền tảng kết nối hàng đầu giữa các cá nhân làm việc tự do và doanh nghiệp trên toàn cầu, tạo ra một môi trường làm việc linh hoạt và hiệu quả.
+                        </p>
+                        <ul class="footer-contact">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-phone fticn"></i> 032 986 7757
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-envelope fticn"></i>
+                                    Bytebiz@gmail.com
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-map-marker fticn"></i>
+                                    Hoa Lac, Hanoi
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-sm-6 col-12">
+                        <h2 class="footer-heading">
+                            <span>Tất cả ngành nghề</span>
+                        </h2>
+                        <ul class="footer-list">
+                            @foreach(var field in fields)
+                            {
+                                <li><a href="#">@field.FieldName</a></li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-sm-6 col-12">
+                        <h2 class="footer-heading">
+                            <span>Tất cả hình thức</span>
+                        </h2>
+                        <ul class="footer-list">
+                            <li><a href="#">Offline</a></li>
+                            <li><a href="#">Online</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-sm-12 col-12">
+                        <h2 class="footer-heading">
+                            <span>Tất cả tỉnh thành</span>
+                        </h2>
+                        <ul class="footer-list">
+                            <li><a href="#">Hồ Chính Minh</a></li>
+                            <li><a href="#">Hà Nội</a></li>
+                            <li><a href="#">Đà Nẵng</a></li>
+                            <li><a href="#">Buôn Ma Thuột</a></li>
+                            <li><a href="#">.....</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.facebook.com/profile.php?id=61566328774947" target="_blank" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="~/img/mess.jpg" alt="Messenger Icon" style="width: 20px; height: 20px; margin-right: 5px;">
+                Chat với chúng tôi trên Messenger
+            </a>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="~/js/readmore.js"></script>
+    <script type="text/javascript">
+        $('.catelog-list').readmore({
+          speed: 75,
+          maxHeight: 150,
+          moreLink: '<a href="#">Xem thêm<i class="fa fa-angle-down pl-2"></i></a>',
+          lessLink: '<a href="#">Rút gọn<i class="fa fa-angle-up pl-2"></i></a>'
+        });
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="~/js/jquery-3.4.1.slim.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/select2.min.js"></script>
+    <script src="~/js/jobdata.js"></script>
+
+    <script type="text/javascript" src="~/js/main.js"></script>
+    <!-- Owl Stylesheets Javascript -->
+    <script src="~/js/owlcarousel/owl.carousel.js"></script>
+    <!-- Read More Plugin -->
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,250 @@
+﻿@page "/Customs/SearchJob/{fieldId?}"
+@model Web.Pages.Customs.SearchJobModel
+@{
+}
+<div class="container-fluid search-fluid">
+    <div class="container">
+        <div class="search-wrapper">
+            <ul class="nav nav-tabs search-nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item search-nav-item">
+                    <a style="color:black" class="nav-link snav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tìm việc làm</a>
+                </li>
+            </ul>
+            <div class="tab-content search-tab-content" id="myTabContent">
+                <!-- content tab 1 -->
+                <div class="tab-pane stab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <form class="bn-search-form" method="post" asp-page-handler="Search">
+                        <div class="row">
+                            <div class="col-md-10 col-sm-12">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="input-group s-input-group">
+                                            <input type="text" class="form-control sinput" placeholder="Nhập tiêu đề công việc,..." name="title" value="@Model.searchModel.Title">
+                                            <span><i class="fa fa-search"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select id="computer-languages" name="fieldId">
+                                            <option hidden>Tất cả ngành</option>
+                                            @foreach(var field in Model.fields)
+                                            {
+                                                if (field.Id == Model.searchModel.FieldId)
+                                                {
+                                                    <option value="@field.Id" selected>@field.Name</option>
+                                                }else{
+                                                    <option value="@field.Id">@field.Name</option>
+                                                }                                           
+                                            }                                           
+                                        </select>
+                                        <i class="fa fa-code sfa" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select id="s-provinces" name="address">
+                                            <option value="" selected hidden>Tất cả địa điểm</option>
+                                            <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                                            <option value="Hà Nội">Hà Nội</option>
+                                            <option value="An Giang">An Giang</option>
+                                            <option value="Bạc Liêu">Bạc Liêu</option>
+                                            <option value="Bà Rịa-Vũng Tàu">Bà Rịa-Vũng Tàu</option>
+                                            <option value="Bắc Cạn">Bắc Cạn</option>
+                                            <option value="Bắc Giang">Bắc Giang</option>
+                                            <option value="Bắc Ninh">Bắc Ninh</option>
+                                            <option value="Bến Tre">Bến Tre</option>
+                                            <option value="Bình Dương">Bình Dương</option>
+                                            <option value="Bình Định">Bình Định</option>
+                                            <option value="Bình Phước">Bình Phước</option>
+                                            <option value="Bình Thuận">Bình Thuận</option>
+                                            <option value="Cao Bằng">Cao Bằng</option>
+                                            <option value="Cà Mau">Cà Mau</option>
+                                            <option value="Cần Thơ">Cần Thơ</option>
+                                            <option value="Đà Nẵng">Đà Nẵng</option>
+                                            <option value="Đắk Lắk">Đắk Lắk</option>
+                                            <option value="Đắk Nông">Đắk Nông</option>
+                                            <option value="Điện Biên">Điện Biên</option>
+                                            <option value="Đồng Nai">Đồng Nai</option>
+                                            <option value="Đồng Tháp">Đồng Tháp</option>
+                                            <option value="Gia Lai">Gia Lai</option>
+                                            <option value="Hà Giang">Hà Giang</option>
+                                            <option value="Hà Nam">Hà Nam</option>
+                                            <option value="Hà Tĩnh">Hà Tĩnh</option>
+                                            <option value="Hải Dương">Hải Dương</option>
+                                            <option value="Hải Phòng">Hải Phòng</option>
+                                            <option value="Hậu Giang">Hậu Giang</option>
+                                            <option value="Hòa Bình">Hòa Bình</option>
+                                            <option value="Hưng Yên">Hưng Yên</option>
+                                            <option value="Khánh Hòa">Khánh Hòa</option>
+                                            <option value="Kiên Giang">Kiên Giang</option>
+                                            <option value="Kon Tum">Kon Tum</option>
+                                            <option value="Lai Châu">Lai Châu</option>
+                                            <option value="Lạng Sơn">Lạng Sơn</option>
+                                            <option value="Lào Cai">Lào Cai</option>
+                                            <option value="Lâm Đồng">Lâm Đồng</option>
+                                            <option value="Long An">Long An</option>
+                                            <option value="Nam Định">Nam Định</option>
+                                            <option value="Nghệ An">Nghệ An</option>
+                                            <option value="Ninh Bình">Ninh Bình</option>
+                                            <option value="Ninh Thuận">Ninh Thuận</option>
+                                            <option value="Phú Thọ">Phú Thọ</option>
+                                            <option value="Phú Yên">Phú Yên</option>
+                                            <option value="Quảng Bình">Quảng Bình</option>
+                                            <option value="Quảng Nam">Quảng Nam</option>
+                                            <option value="Quảng Ngãi">Quảng Ngãi</option>
+                                            <option value="Quảng Nin">Quảng Ninh</option>
+                                            <option value="Quảng Trị">Quảng Trị</option>
+                                            <option value="Sóc Trăng">Sóc Trăng</option>
+                                            <option value="Sơn La">Sơn La</option>
+                                            <option value="Tây Ninh">Tây Ninh</option>
+                                            <option value="Thái Bình">Thái Bình</option>
+                                            <option value="Thái Nguyên">Thái Nguyên</option>
+                                            <option value="Thanh Hóa">Thanh Hóa</option>
+                                            <option value="Thừa Thiên-Huế">Thừa Thiên-Huế</option>
+                                            <option value="Tiền Giang">Tiền Giang</option>
+                                            <option value="Trà Vinh">Trà Vinh</option>
+                                            <option value="Tuyên Quang">Tuyên Quang</option>
+                                            <option value="Vĩnh Long">Vĩnh Long</option>
+                                            <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                                            <option value="Yên Bái">Yên Bái</option>
+                                            <option value="Toàn quốc">Toàn quốc</option>
+                                            <option value="Nước ngoài">Nước ngoài</option>
+                                        </select>
+                                        <i class="fa fa-map-marker sfa" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-12">
+                                <button type="submit" class="btn btn-primary btn-search col-sm-12">Tìm kiếm</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- (end) content tab 1 -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="container search-wrapper">
+        <div class="row">
+            <div class="col-md-3 col-sm-12 col-12">
+                <a id="click_advance" class="btn btn-c-filter" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+                    <i class="pr-2 fa fa-times" id="icon-s-sw" aria-hidden="true"></i>Filter &amp; Refind
+                </a>
+                <div class="collapse show" id="collapseExample" style="">
+                    <div class="card card-body bg-card-body-filter">
+                        <div class="filter-bar">
+                            <div class="filter-form">
+                                <div class="filter-form-item">
+                                    <p>
+                                        <a id="clickc2_advance" class="btnf btn-filter" data-toggle="collapse" href="#filter-price" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            Giá trị dự án(triệu đồng)
+                                            <i class="fa fa-angle-up" aria-hidden="true"></i>
+                                        </a>
+                                    </p>
+                                    <div class="collapse show" id="filter-price">
+                                        <div class="card o-card card-body">
+                                            <div class="filter-panel">
+                                                <div class="panel-content">
+                                                    <div class="filter-topic filter-input-price">
+                                                        <form class="al-price-filter" method="post" asp-page-handler="FilterPrice" onsubmit="return validateBudget()">
+                                                            <span class="_fpblock">
+                                                                <input type="number" class="if-price" id="budgetFrom" placeholder="1" name="budgetFrom" value="@Model.BudgetFrom">
+                                                            </span>
+                                                            <span class="_fpblock _line">
+                                                                <p>-</p>
+                                                            </span>
+                                                            <span class="_fpblock">
+                                                                <input type="number" class="if-price" id="budgetTo" placeholder="10" name="budgetTo" value="@Model.BudgetTo">
+                                                            </span>
+                                                            <span class="_fpblock">
+                                                                <button type="submit" class="sb-fprice"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                                                            </span>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- filter bar -->
+                        <script type="text/javascript">
+                            window.onload = function () { screenCollapse() };
+
+                            let ele = document.getElementsByClassName("collapse");
+
+                            function screenCollapse() {
+                                if (window.innerWidth < 720) {
+                                    $(".collapse").removeClass("show");
+                                    $(".collapse").addClass("hide");
+                                }
+                            }
+                        </script>
+                    </div>
+                </div> <!-- ./ collapse -->
+            </div>
+            <div class="col-md-9 col-sm-12 col-12">
+                <h4 class="search-find">Tìm thấy @Model.searchProjects.Count việc làm đang tuyển dụng</h4>
+                @if (Model.searchProjects.Count > 0)
+                {
+                    <div class="job-board-wrap">
+                        <div class="job-group">
+                            @foreach (var project in Model.searchProjects)
+                            {
+                                <div class="job pagi">
+                                    <div class="job-content">
+                                        <div class="job-desc">
+                                            <div class="job-title">
+                                                <a href="/Customs/ProjectDescription/@project.Id">@project.Title</a>
+                                            </div>
+                                            <div class="job-company">
+                                                <a href="#">Fpt Software</a> | <a href="#" class="job-address">
+                                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                    @project.Address
+                                                </a>
+                                            </div>
+
+                                            <div class="job-inf">
+                                                <div class="job-main-skill">
+                                                    <i class="fa fa-code" aria-hidden="true"></i>  <a href="#"> @project.FieldName</a>
+                                                </div>
+                                                <div class="job-salary">
+                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                    <span class="salary-min">@project.BudgetFrom<em class="salary-unit">triệu</em></span>
+                                                    <span class="salary-max">@project.BudgetTo<em class="salary-unit">triệu</em></span>
+                                                </div>
+                                                <div class="job-deadline">
+                                                    <span><i class="fa fa-clock-o" aria-hidden="true"></i>  Hạn nộp: <strong>@project.EndDate.ToString("dd-MM-yyyy")</strong></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wrap-btn-appl">
+                                            <a href="/Customs/ProjectDescription/@project.Id" class="btn btn-appl">Xem ngay</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function validateBudget() {
+        const budgetFrom = parseFloat(document.getElementById('budgetFrom').value);
+        const budgetTo = parseFloat(document.getElementById('budgetTo').value);
+
+        if (isNaN(budgetFrom) || isNaN(budgetTo)) {
+            alert("Vui lòng nhập số tiền hợp lệ.");
+            return false;
+        }
+
+        if (budgetFrom >= budgetTo) {
+            alert("Số tiền tối thiểu phải nhỏ hơn số tiền tối đa.");
+            return false; // Ngăn không cho submit form
+        }
+
+        return true; // Cho phép submit form
+    }
+</script>

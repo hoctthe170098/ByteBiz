@@ -1,0 +1,14 @@
+D:\FPT\Fall24\EXE211\code\ByteBiz\BusinessObjects\bin\Debug\net8.0\BusinessObjects.deps.json
+D:\FPT\Fall24\EXE211\code\ByteBiz\BusinessObjects\bin\Debug\net8.0\BusinessObjects.runtimeconfig.json
+D:\FPT\Fall24\EXE211\code\ByteBiz\BusinessObjects\bin\Debug\net8.0\BusinessObjects.dll
+D:\FPT\Fall24\EXE211\code\ByteBiz\BusinessObjects\bin\Debug\net8.0\BusinessObjects.pdb
+D:\FPT\Fall24\EXE211\code\ByteBiz\BusinessObjects\obj\Debug\net8.0\BusinessObjects.csproj.AssemblyReference.cache
+D:\FPT\Fall24\EXE211\code\ByteBiz\BusinessObjects\obj\Debug\net8.0\BusinessObjects.GeneratedMSBuildEditorConfig.editorconfig
+D:\FPT\Fall24\EXE211\code\ByteBiz\BusinessObjects\obj\Debug\net8.0\BusinessObjects.AssemblyInfoInputs.cache
+D:\FPT\Fall24\EXE211\code\ByteBiz\BusinessObjects\obj\Debug\net8.0\BusinessObjects.AssemblyInfo.cs
+D:\FPT\Fall24\EXE211\code\ByteBiz\BusinessObjects\obj\Debug\net8.0\BusinessObjects.csproj.CoreCompileInputs.cache
+D:\FPT\Fall24\EXE211\code\ByteBiz\BusinessObjects\obj\Debug\net8.0\BusinessObjects.dll
+D:\FPT\Fall24\EXE211\code\ByteBiz\BusinessObjects\obj\Debug\net8.0\refint\BusinessObjects.dll
+D:\FPT\Fall24\EXE211\code\ByteBiz\BusinessObjects\obj\Debug\net8.0\BusinessObjects.pdb
+D:\FPT\Fall24\EXE211\code\ByteBiz\BusinessObjects\obj\Debug\net8.0\BusinessObjects.genruntimeconfig.cache
+D:\FPT\Fall24\EXE211\code\ByteBiz\BusinessObjects\obj\Debug\net8.0\ref\BusinessObjects.dll

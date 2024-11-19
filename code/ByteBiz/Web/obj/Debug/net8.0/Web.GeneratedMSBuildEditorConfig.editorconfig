@@ -1,0 +1,127 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Web
+build_property.RootNamespace = Web
+build_property.ProjectDir = D:\FPT\Fall24\EXE211\code\ByteBiz\Web\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\FPT\Fall24\EXE211\code\ByteBiz\Web
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Accounts/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudHNcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Accounts/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudHNcTG9nb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Accounts/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudHNcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Admins/GenerateAccount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5zXEdlbmVyYXRlQWNjb3VudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Admins/ManageProject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5zXE1hbmFnZVByb2plY3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Admins/ManageUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5zXE1hbmFnZVVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Customers/ChooseFreelancer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJzXENob29zZUZyZWVsYW5jZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Customers/DeleteProject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJzXERlbGV0ZVByb2plY3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Customers/PostProject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJzXFBvc3RQcm9qZWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Customers/ProjectDescription.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJzXFByb2plY3REZXNjcmlwdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Customers/ViewInforFreelancer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJzXFZpZXdJbmZvckZyZWVsYW5jZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Customers/ViewListProject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJzXFZpZXdMaXN0UHJvamVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Customs/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tc1xIb21lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Customs/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tc1xQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Customs/ProjectDescription.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tc1xQcm9qZWN0RGVzY3JpcHRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Customs/SearchJob.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tc1xTZWFyY2hKb2IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Freelancers/CV.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnJlZWxhbmNlcnNcQ1YuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Freelancers/ViewInforCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnJlZWxhbmNlcnNcVmlld0luZm9yQ3VzdG9tZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Freelancers/ViewListProject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnJlZWxhbmNlcnNcVmlld0xpc3RQcm9qZWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/NotFound.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTm90Rm91bmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/UpdateFeature.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXBkYXRlRmVhdHVyZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FPT/Fall24/EXE211/code/ByteBiz/Web/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-esyc55q667

@@ -1,0 +1,336 @@
+﻿@page "/Customers/PostProject/{projectId?}"
+@model Web.Pages.Customers.PostProjectModel
+@{
+}
+<div class="container-fluid published-recuitment-wrapper">
+    <div class="container published-recuitment-content">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-12 recuitment-inner">
+                @if (Model.project.BiddingCount > 0)
+                {
+                    <div id="errorMessage" style=" padding: 10px; margin-top: 20px; border: 1px solid red; background-color: #ffe6e6; color: red; border-radius: 5px;">
+                        <i class="fa fa-exclamation-circle" style="margin-right: 5px;"></i> Dự án của bạn đã có người báo giá, không thể update!
+                    </div>
+                }
+                @if (Model.project.BiddingCount == 0)
+                {
+                    @if (Model.Error != null && Model.Error == "false")
+                    {
+                        <div id="successMessage" style=" padding: 10px; margin-top: 20px; border: 1px solid green; background-color: #e6ffe6; color: green; border-radius: 5px;">
+                            <i class="fa fa-check-circle" style="margin-right: 5px;"></i> Dự án của bạn đã được đăng tải thành công!
+                        </div>
+                    }
+                    @if (Model.Error != null && Model.Error == "true")
+                    {
+                        <div id="errorMessage" style=" padding: 10px; margin-top: 20px; border: 1px solid red; background-color: #ffe6e6; color: red; border-radius: 5px;">
+                            <i class="fa fa-exclamation-circle" style="margin-right: 5px;"></i> Đã xảy ra lỗi khi đăng tải dự án của bạn. Vui lòng thử lại!
+                        </div>
+                    }
+                    <form class="recuitment-form" method="post" id="postproject">
+                        <input type="text" name="proId" value="@Model.project.Id" hidden />
+                        <div class="accordion" id="accordionExample">
+                            <div class="card recuitment-card">
+                                <div class="card-header recuitment-card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <a class="btn btn-link btn-block text-left recuitment-header" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Đăng tin tuyển dụng
+                                            <span id="clickc1_advance2" class="clicksd">
+                                                <i class="fa fa fa-angle-up"></i>
+                                            </span>
+                                        </a>
+                                    </h2>
+                                </div>
+
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body recuitment-body">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Tiêu đề<span style="color: red" class="pl-2">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="title" name="title" class="form-control" placeholder="Nhập tiêu đề"
+                                                       value="@Model.project.Title" required>
+                                                <div id="titleError" style="color:red; display:none;">Tiêu đề phải có ít nhất 15 ký tự và nhiều nhất 100 ký tự</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Lĩnh vực<span style="color: red" class="pl-2">*</span></label>
+                                            <div class="col-sm-9">
+                                                <select type="text" class="form-control" id="field" name="field">
+                                                    <option value="" disabled="true">Chọn Lĩnh vực</option>
+                                                    @foreach (var field in Model.fields)
+                                                    {
+                                                        if (Model.project.FieldName == field.Name)
+                                                        {
+                                                            <option value="@field.Id" selected>@field.Name</option>
+                                                        }
+                                                        if (Model.project.FieldName != field.Name)
+                                                        {
+                                                            <option value="@field.Id">@field.Name</option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Mô tả công việc<span style="color: red" class="pl-2">*</span></label>
+                                            <div class="col-sm-9">
+                                                <textarea type="text" id="description" class="form-control" name="description" placeholder="Nhập mô tả công việc" rows="10" required>@Model.project.Description</textarea>
+                                                <div id="descriptionError" style="color:red; display:none;">Mô tả phải có ít nhất 100 ký tự</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Hình thức làm việc<span style="color: red" class="pl-2">*</span></label>
+                                            <div class="col-sm-9">
+                                                <select type="text" class="form-control" id="natureWork" name="formofwork">
+                                                    <option value="" disabled="true">Chọn hình thức làm việc</option>
+                                                    @if (Model.project.FormOfWork == "Online")
+                                                    {
+                                                        <option value="Online" selected>Online</option>
+                                                    }
+                                                    @if (Model.project.FormOfWork != "Online")
+                                                    {
+                                                        <option value="Online">Online</option>
+                                                    }
+                                                    @if (Model.project.FormOfWork == "Offline")
+                                                    {
+                                                        <option value="Offline" selected>Offline</option>
+                                                    }
+                                                    @if (Model.project.FormOfWork != "Offline")
+                                                    {
+                                                        <option value="Offline">Offline</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Ngân sách từ(triệu đồng)<span style="color: red" class="pl-2">*</span> </label>
+                                            <div class="col-sm-9">
+                                                <input type="number" id="budgetfrom" name="budgetfrom" class="form-control" value="@Model.project.BudgetFrom" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Ngân sách đến(triệu đồng)<span style="color: red" class="pl-2">*</span> </label>
+                                            <div class="col-sm-9">
+                                                <input type="number" id="budgetto" name="budgetto" class="form-control" value="@Model.project.BudgetTo" required>
+                                                <div id="budgetError" style="color:red; display:none;">Ngân sách tối đa phải lớn hơn ngân sách tối thiểu ít nhất 2 triệu</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Nơi làm việc</label>
+                                            <div class="col-sm-9">
+                                                <select type="text" class="form-control" id="jobProvince" name="jobProvince">
+                                                    <option value="">Chọn nơi làm việc(bắt buộc nếu hình thức làm việc là offline)</option>
+                                                    <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                                                    <option value="Hà Nội">Hà Nội</option>
+                                                    <option value="An Giang">An Giang</option>
+                                                    <option value="Bạc Liêu">Bạc Liêu</option>
+                                                    <option value="Bà Rịa-Vũng Tàu">Bà Rịa-Vũng Tàu</option>
+                                                    <option value="Bắc Cạn">Bắc Cạn</option>
+                                                    <option value="Bắc Giang">Bắc Giang</option>
+                                                    <option value="Bắc Ninh">Bắc Ninh</option>
+                                                    <option value="Bến Tre">Bến Tre</option>
+                                                    <option value="Bình Dương">Bình Dương</option>
+                                                    <option value="Bình Định">Bình Định</option>
+                                                    <option value="Bình Phước">Bình Phước</option>
+                                                    <option value="Bình Thuận">Bình Thuận</option>
+                                                    <option value="Cao Bằng">Cao Bằng</option>
+                                                    <option value="Cà Mau">Cà Mau</option>
+                                                    <option value="Cần Thơ">Cần Thơ</option>
+                                                    <option value="Đà Nẵng">Đà Nẵng</option>
+                                                    <option value="Đắk Lắk">Đắk Lắk</option>
+                                                    <option value="Đắk Nông">Đắk Nông</option>
+                                                    <option value="Điện Biên">Điện Biên</option>
+                                                    <option value="Đồng Nai">Đồng Nai</option>
+                                                    <option value="Đồng Tháp">Đồng Tháp</option>
+                                                    <option value="Gia Lai">Gia Lai</option>
+                                                    <option value="Hà Giang">Hà Giang</option>
+                                                    <option value="Hà Nam">Hà Nam</option>
+                                                    <option value="Hà Tĩnh">Hà Tĩnh</option>
+                                                    <option value="Hải Dương">Hải Dương</option>
+                                                    <option value="Hải Phòng">Hải Phòng</option>
+                                                    <option value="Hậu Giang">Hậu Giang</option>
+                                                    <option value="Hòa Bình">Hòa Bình</option>
+                                                    <option value="Hưng Yên">Hưng Yên</option>
+                                                    <option value="Khánh Hòa">Khánh Hòa</option>
+                                                    <option value="Kiên Giang">Kiên Giang</option>
+                                                    <option value="Kon Tum">Kon Tum</option>
+                                                    <option value="Lai Châu">Lai Châu</option>
+                                                    <option value="Lạng Sơn">Lạng Sơn</option>
+                                                    <option value="Lào Cai">Lào Cai</option>
+                                                    <option value="Lâm Đồng">Lâm Đồng</option>
+                                                    <option value="Long An">Long An</option>
+                                                    <option value="Nam Định">Nam Định</option>
+                                                    <option value="Nghệ An">Nghệ An</option>
+                                                    <option value="Ninh Bình">Ninh Bình</option>
+                                                    <option value="Ninh Thuận">Ninh Thuận</option>
+                                                    <option value="Phú Thọ">Phú Thọ</option>
+                                                    <option value="Phú Yên">Phú Yên</option>
+                                                    <option value="Quảng Bình">Quảng Bình</option>
+                                                    <option value="Quảng Nam">Quảng Nam</option>
+                                                    <option value="Quảng Ngãi">Quảng Ngãi</option>
+                                                    <option value="Quảng Nin">Quảng Ninh</option>
+                                                    <option value="Quảng Trị">Quảng Trị</option>
+                                                    <option value="Sóc Trăng">Sóc Trăng</option>
+                                                    <option value="Sơn La">Sơn La</option>
+                                                    <option value="Tây Ninh">Tây Ninh</option>
+                                                    <option value="Thái Bình">Thái Bình</option>
+                                                    <option value="Thái Nguyên">Thái Nguyên</option>
+                                                    <option value="Thanh Hóa">Thanh Hóa</option>
+                                                    <option value="Thừa Thiên-Huế">Thừa Thiên-Huế</option>
+                                                    <option value="Tiền Giang">Tiền Giang</option>
+                                                    <option value="Trà Vinh">Trà Vinh</option>
+                                                    <option value="Tuyên Quang">Tuyên Quang</option>
+                                                    <option value="Vĩnh Long">Vĩnh Long</option>
+                                                    <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                                                    <option value="Yên Bái">Yên Bái</option>
+                                                    <option value="Toàn quốc">Toàn quốc</option>
+                                                    <option value="Nước ngoài">Nước ngoài</option>
+                                                </select>
+                                                @if (Model.project.Address != "")
+                                                {
+                                                    <label class="col-form-label text-right label">Địa chỉ đã chọn: @Model.project.Address</label>
+                                                    <input name="selectedAddress" value="@Model.project.Address" hidden/>
+                                                }
+                                                <div id="provinceError" style="color:red; display:none;">Bạn phải chọn nơi làm việc khi chọn hình thức làm việc là offline</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Hạn nộp hồ sơ<span style="color: red" class="pl-2">*</span></label>
+                                            <div class="col-sm-9">
+                                                @if (Model.project.EndDate == DateTime.MinValue)
+                                                {
+                                                    <input type="date" class="form-control" id="date" name="date" placeholder="Nhập nơi làm việc" required>
+                                                }
+                                                @if (Model.project.EndDate != DateTime.MinValue)
+                                                {
+                                                    <input type="date" class="form-control" id="date" name="date" value="@Model.project.EndDate.ToString("yyyy-MM-dd")" placeholder="Nhập nơi làm việc" required>
+                                                }
+                                                <div id="dateError" style="color:red; display:none;">Hạn nộp phải lớn hơn ngày hiện tại ít nhất 2 ngày</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rec-submit">
+                            <button type="submit" id="btnsubmit" class="btn-submit-recuitment" name="">
+                                <i class="fa fa-floppy-o pr-2"></i>Lưu Tin
+                            </button>
+                        </div>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById('natureWork').addEventListener('change', function () {
+        const natureWork = document.getElementById('natureWork').value;
+        const jobProvince = document.getElementById('jobProvince').value;
+        const provinceError = document.getElementById('provinceError');
+
+        if (natureWork === 'Offline' && jobProvince === '') {
+            provinceError.style.display = 'block'; // Hiển thị lỗi yêu cầu chọn địa điểm
+        } else {
+            provinceError.style.display = 'none'; // Ẩn lỗi khi người dùng chọn giá trị hợp lệ
+        }
+
+        validateForm(); // Kích hoạt validate lại form khi thay đổi natureWork
+    });
+
+    document.getElementById('postproject').addEventListener('input', validateForm);
+
+    function validateForm() {
+        let isValid = true;
+
+        // Validate Title
+        const title = document.getElementById('title').value.trim();
+        const titleError = document.getElementById('titleError');
+        if (title.length < 15 || title.length > 100) {
+            titleError.style.display = 'block';
+            isValid = false;
+        } else {
+            titleError.style.display = 'none';
+        }
+
+        // Validate Description
+        const description = document.getElementById('description').value.trim();
+        const descriptionError = document.getElementById('descriptionError');
+        if (description.length < 100) {
+            descriptionError.style.display = 'block';
+            isValid = false;
+        } else {
+            descriptionError.style.display = 'none';
+        }
+
+        // Validate Budget
+        const budgetFrom = parseInt(document.getElementById('budgetfrom').value);
+        const budgetTo = parseInt(document.getElementById('budgetto').value);
+        const budgetError = document.getElementById('budgetError');
+        if (!isNaN(budgetFrom) && !isNaN(budgetTo) && (budgetTo <= budgetFrom + 2)) {
+            budgetError.style.display = 'block';
+            isValid = false;
+        } else {
+            budgetError.style.display = 'none';
+        }
+
+        // Validate Job Province
+        const natureWork = document.getElementById('natureWork').value;
+        const jobProvince = document.getElementById('jobProvince').value;
+        const provinceError = document.getElementById('provinceError');
+        if (natureWork === 'Offline' && jobProvince === '') {
+            provinceError.style.display = 'block';
+            isValid = false;  // Form không hợp lệ nếu chưa chọn địa điểm và natureWork là Offline
+        } else {
+            provinceError.style.display = 'none';
+        }
+
+        // Validate Date
+        const dateInput = document.getElementById('date').value;
+        const dateError = document.getElementById('dateError');
+        const selectedDate = new Date(dateInput);
+        const currentDate = new Date();
+        currentDate.setDate(currentDate.getDate() + 2); // ngày hiện tại + 2 ngày
+        if (selectedDate <= currentDate) {
+            dateError.style.display = 'block';
+            isValid = false;
+        } else {
+            dateError.style.display = 'none';
+        }
+
+        // Enable/Disable Submit Button
+        document.getElementById('btnsubmit').disabled = !isValid;
+    }
+
+    // On page load, kiểm tra nếu natureWork đang là "Offline" mà chưa chọn địa điểm thì yêu cầu chọn
+    window.onload = function () {
+        const natureWork = document.getElementById('natureWork').value;
+        const jobProvince = document.getElementById('jobProvince').value;
+        const provinceError = document.getElementById('provinceError');
+        if (natureWork === 'Offline' && jobProvince === '') {
+            provinceError.style.display = 'block'; // Yêu cầu chọn địa điểm ngay khi load trang nếu đang là Offline
+        }
+    };
+    document.getElementById('postproject').addEventListener('submit', function (event) {
+        let isValid = true;
+
+        // Validate Job Province (kiểm tra nếu hình thức làm việc là Offline)
+        const natureWork = document.getElementById('natureWork').value;
+        const jobProvince = document.getElementById('jobProvince').value;
+        const provinceError = document.getElementById('provinceError');
+
+        if (natureWork === 'Offline' && jobProvince === '') {
+            provinceError.style.display = 'block';  // Hiển thị lỗi khi chưa chọn địa điểm
+            isValid = false;
+        } else {
+            provinceError.style.display = 'none';   // Ẩn lỗi khi đã chọn địa điểm hợp lệ
+        }
+
+        // Nếu form không hợp lệ, ngăn chặn việc gửi form
+        if (!isValid) {
+            event.preventDefault();  // Ngăn không cho form được submit
+        }
+    });
+
+</script>
+

@@ -1,0 +1,212 @@
+﻿@page "/Freelancers/ViewListProject/{status}/{index?}"
+@model Web.Pages.Freelancers.ViewListProjectModel
+@{
+    int count = 1;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Table with Pagination</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        .table-container {
+            width: 80%;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        thead {
+            background-color: #007bff;
+            color: white;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .action-icons a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+            .action-icons a.update {
+                color: #28a745;
+            }
+
+            .action-icons a.delete {
+                color: #dc3545;
+            }
+
+        /* Styling for pagination */
+        .pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+            .pagination a {
+                color: #007bff;
+                padding: 10px 15px;
+                text-decoration: none;
+                border-radius: 5px;
+                margin: 0 5px;
+                border: 1px solid #ddd;
+                transition: background-color 0.3s ease;
+            }
+
+                .pagination a:hover {
+                    background-color: #007bff;
+                    color: white;
+                }
+
+                .pagination a.active {
+                    background-color: #007bff;
+                    color: white;
+                    border: 1px solid #007bff;
+                }
+        /* Style cho popup chung */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .close-popup, .confirm-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .close-popup {
+            background-color: red;
+        }
+
+        .confirm-button {
+            background-color: green;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="table-container">
+        @if (Model.projectPaggingDTO.StatusProject == "Hiring")
+        {
+            <h2>Các dự án đang báo giá</h2>
+        }
+        @if (Model.projectPaggingDTO.StatusProject == "Done")
+        {
+            <h2>Các dự án đã nhận</h2>
+        }
+        @if (Model.projectPaggingDTO.StatusProject == "Wating")
+        {
+            <h2>Các dự án đang chờ xét tuyển</h2>
+        }
+        @if (Model.projectPaggingDTO.StatusProject == "Refuse")
+        {
+            <h2>Các dự án đã bị từ chối</h2>
+        }
+        <table>
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Tiêu đề</th>
+                    <th>Số lượt báo giá</th>
+                    <th>Người đăng</th>
+                    <th>Hạn nộp</th>
+                    <th>Số tiền báo giá</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var project in Model.projectPaggingDTO.projects)
+                {
+                    <tr>
+                        <td>@(count++)</td>
+                        <td><a href="/Customs/ProjectDescription/@project.Id">@project.Title</a></td>
+                        <td>@project.BiddingCount</td>
+                        <td>@project.PosterName</td>
+                        <td>@project.EndDate.ToString("dd-MM-yyyy")</td>
+                        <td>@project.BiddingMoney triệu đồng</td>
+                    </tr>
+                }
+                <!-- Thêm các hàng khác tại đây -->
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            @for (int i = 1; i <= Model.projectPaggingDTO.total; i++)
+            {
+                if (i == Model.projectPaggingDTO.page)
+                {
+                    <a href="/Customers/ViewListProject/@Model.projectPaggingDTO.StatusProject/@i"
+                       class="active">@i</a>
+                }
+                else
+                {
+                    <a href="/Customers/ViewListProject/@Model.projectPaggingDTO.StatusProject/@i">@i</a>
+                }
+            }
+        </div>
+    </div>
+</body>
+</html>
+

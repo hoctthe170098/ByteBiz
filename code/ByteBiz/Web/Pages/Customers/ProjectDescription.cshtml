@@ -1,0 +1,283 @@
+﻿@page "/Customers/ProjectDescription/{projectId?}/{msg?}"
+@model Web.Pages.Customers.ProjectDescriptionModel
+@{
+}
+<style>
+    /* Style cho popup */
+    .popup {
+        display: none; /* Ẩn popup mặc định */
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Tạo hiệu ứng nền tối */
+        z-index: 9999;
+    }
+
+    .popup-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        width: 400px;
+        margin: 15% auto;
+        text-align: center;
+    }
+
+    .popup-actions {
+        margin-top: 20px;
+    }
+
+        /* Nút trong popup */
+        .popup-actions button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .popup-actions .btn-yes {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .popup-actions .btn-no {
+            background-color: #dc3545;
+            color: white;
+        }
+
+</style>
+<div class="clearfix"></div>
+<!-- job detail header -->
+
+<div class="container-fluid job-detail-wrap">
+    <div class="container job-detail">
+        <div class="job-detail-header">
+            <div class="row">
+                <div class="col-md-7 col-sm-12 col-12">
+                    <div class="job-detail-header-desc">
+                        <div class="job-detail-header-title">
+                            <a href="">@Model.project.Title</a>
+                        </div>
+                        <div class="job-detail-header-company">
+                            <a href="">@Model.project.FieldName</a>
+                        </div>
+                        <div class="job-detail-header-de">
+                            <ul>
+                                <li><i class="fa fa-map-marker icn-jd"></i><span>@Model.project.Address</span></li>
+                                <li><i class="fa fa-usd icn-jd"></i><span>@Model.project.BudgetFrom triệu - @Model.project.BudgetTo triệu</span></li>
+                                <li><i class="fa fa-calendar icn-jd"></i><span>@Model.project.EndDate.ToString("dd-MM-yyyy")</span></li>
+                                <span id="budgetFrom" hidden>@Model.project.BudgetFrom</span>
+                                <span id="budgetTo" hidden>@Model.project.BudgetTo</span>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12 col-12">
+                    <div class="jd-header-wrap-right">
+                        <div class="jd-center">
+                            <h4 class="jd-view">Lượt báo giá: <span>@Model.project.BiddingCount</span></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- (end) job detail header -->
+
+<div class="clearfix"></div>
+
+<!-- Phần thân -->
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+            <!-- Main wrapper -->
+            <div class="col-md-8 col-sm-12 col-12 clear-left">
+                @if (Model.error != null)
+                {
+                    <div id="errorMessage" style=" padding: 10px; margin-top: 20px; border: 1px solid red; background-color: #ffe6e6; color: red; border-radius: 5px;">
+                        <i class="fa fa-exclamation-circle" style="margin-right: 5px;">@Model.error</i>
+                    </div>
+                }
+                @if (Model.message != null)
+                {
+                    <div id="successMessage" style=" padding: 10px; margin-top: 20px; border: 1px solid green; background-color: #e6ffe6; color: green; border-radius: 5px;">
+                        <i class="fa fa-check-circle" style="margin-right: 5px;">@Model.message</i>
+                    </div>
+                }
+                <div class="main-wrapper">
+                    <h2 class="widget-title">
+                        <span>Mô tả công việc</span>
+                    </h2>
+                    <div class="jd-content">
+                        @Html.Raw(Model.project.Description.Replace("\n", "<br />"))
+                    </div>
+                </div>
+            </div>
+            <!-- Sidebar -->
+            <div class="col-md-4 col-sm-12 col-12 clear-right">
+                <div class="side-bar mb-3">
+                    <h2 class="widget-title">
+                        <span>Thông tin</span>
+                    </h2>
+
+                    <div class="job-info-wrap">
+                        <div class="job-info-list">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <span class="ji-title">Địa chỉ:</span>
+                                </div>
+                                <div class="col-sm-8">
+                                    <span class="ji-main">@Model.project.Address</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="job-info-list">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <span class="ji-title">Hình thức làm việc:</span>
+                                </div>
+                                <div class="col-sm-8">
+                                    <span class="ji-main">@Model.project.FormOfWork</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="job-info-list">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <span class="ji-title">Lương:</span>
+                                </div>
+                                <div class="col-sm-8">
+                                    <span class="ji-main">@Model.project.BudgetFrom triệu đồng - @Model.project.BudgetTo triệu đồng</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="job-info-list">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <span class="ji-title">Hạn nộp:</span>
+                                </div>
+                                <div class="col-sm-8">
+                                    <span class="ji-main">@Model.project.EndDate.ToString("dd-MM-yyyy")</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-info-list">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <span class="ji-title">Lĩnh vực:</span>
+                                </div>
+                                <div class="col-sm-8">
+                                    <span class="ji-main">@Model.project.FieldName</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @if (Model.project.shortProfileFreelancers != null)
+                {
+                    <div class="side-bar mb-3">
+                        <h2 class="widget-title">
+                            <span>Danh sách người báo giá</span>
+                        </h2>
+                        <p hidden id="projectStatus">@Model.project.Status</p>
+                        <div class="job-tt-contain">
+                                @foreach (var item in Model.project.shortProfileFreelancers)
+                                {
+                                    <div class="job-tt-item">
+                                        <div class="wrap-btn-appl">
+                                            <a href="/Customers/ChooseFreelancer/@Model.project.Id/@item.Id" class="btn btn-appl chooseButton"
+                                               id="chooseButton" name="chooseButton">Chọn</a>
+                                        </div>
+                                        <div class="info">
+                                            <a href="/Customers/ViewInforFreelancer/@Model.project.Status/@item.Id" class="jobname">
+                                                @item.Name
+                                            </a>
+                                            <a class="company">
+                                                @item.BidMoney triệu đồng
+                                            </a>
+                                        </div>
+                                    </div>
+                                }                            
+                        </div>
+                    </div>
+                }
+                <div class="side-bar mb-3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="home-ads">
+                                    <a href="#">
+                                        <img src="~/img/qc2.jpg">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <p id="popupMessage"></p>
+        <div id="popupActions" class="popup-actions">
+            <!-- Các nút sẽ được thêm vào đây tuỳ thuộc vào tình huống -->
+        </div>
+    </div>
+</div>
+<script>
+    document.querySelectorAll(".chooseButton").forEach(function (button) {
+        button.addEventListener("click", function (event) {
+            event.preventDefault(); // Ngăn điều hướng ban đầu của nút "Chọn"
+
+            // Lấy trạng thái của dự án
+            var status = document.getElementById("projectStatus").innerText;
+            var popup = document.getElementById("popup");
+            var popupMessage = document.getElementById("popupMessage");
+            var popupActions = document.getElementById("popupActions");
+
+            // Xóa các nút cũ nếu có trong popupActions
+            popupActions.innerHTML = '';
+
+            if (status === "Hiring") {
+                // Hiển thị lỗi khi trạng thái là Hiring
+                popupMessage.innerText = "Dự án này chưa thể chọn người làm!";
+                popupActions.innerHTML = '<button class="btn-no" onclick="closePopup()">OK</button>';
+            } else if (status === "Done" || status === "Cancel") {
+                // Hiển thị lỗi khi trạng thái là Done hoặc Cancel
+                popupMessage.innerText = "Dự án này không thể chọn người làm nữa!";
+                popupActions.innerHTML = '<button class="btn-no" onclick="closePopup()">OK</button>';
+            } else if (status === "Wating") {
+                // Hiển thị cảnh báo khi trạng thái là Wating
+                popupMessage.innerText = "Bạn có chắc muốn chọn người này cho dự án? Bạn chỉ có thể chọn 1 lần duy nhất, hãy xem profile và cân nhắc kỹ!";
+                popupActions.innerHTML = `
+                    <button class="btn-yes" id="confirmYes">Có</button>
+                    <button class="btn-no" onclick="closePopup()">Không</button>
+                `;
+
+                // Xử lý khi người dùng bấm "Có"
+                document.getElementById("confirmYes").addEventListener("click", function () {
+                    window.location.assign(button.getAttribute("href"));
+                });
+            }
+
+            // Hiển thị popup
+            popup.style.display = "block";
+        });
+    });
+
+    // Hàm đóng popup
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+</script>
+
+
+

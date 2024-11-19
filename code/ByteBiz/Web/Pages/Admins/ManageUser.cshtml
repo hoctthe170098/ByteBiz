@@ -1,0 +1,164 @@
+﻿@page "/Admins/ManageUser/{index?}"
+@model Web.Pages.Admins.ManageUserModel
+@{
+    int count = 1;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Table with Pagination</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        .table-container {
+            width: 80%;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        thead {
+            background-color: #007bff;
+            color: white;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .action-icons a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+            .action-icons a.update {
+                color: #28a745;
+            }
+
+            .action-icons a.delete {
+                color: #dc3545;
+            }
+
+        /* Styling for pagination */
+        .pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+            .pagination a {
+                color: #007bff;
+                padding: 10px 15px;
+                text-decoration: none;
+                border-radius: 5px;
+                margin: 0 5px;
+                border: 1px solid #ddd;
+                transition: background-color 0.3s ease;
+            }
+                .pagination a:hover {
+                    background-color: #007bff;
+                    color: white;
+                }
+
+                .pagination a.active {
+                    background-color: #007bff;
+                    color: white;
+                    border: 1px solid #007bff;
+                }      
+    </style>
+</head>
+<body>
+    <div class="table-container">
+            <h2>Danh sách người dùng</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                    <th>Vai trò</th>
+                    <th>Tên đầy đủ</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var account in Model.accountPagging.listAccount)
+                {
+                    <tr>
+                        <td>@(count++)</td>
+                        <td>@account.username</td>
+                        <td>@account.email</td>
+                        <td>@account.phoneNumber</td>
+                        <td>@account.role</td>
+                        <td>@account.fullname</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            @if (Model.accountPagging.total > 1)
+            {
+                // Hiển thị trang đầu tiên
+                <a href="/Admins/ManageUser/1" class="@(Model.accountPagging.page == 1 ? "active" : "")">1</a>
+
+                // Nếu trang hiện tại lớn hơn 4, hiển thị "..." sau trang đầu
+                if (Model.accountPagging.page > 4)
+                {
+                    <span>...</span>
+                }
+
+                // Hiển thị các trang xung quanh trang hiện tại
+                for (int i = Math.Max(2, Model.accountPagging.page - 2); i <= Math.Min(Model.accountPagging.total - 1, Model.accountPagging.page + 2); i++)
+                {
+                    <a href="/Admins/ManageUser/@i" class="@(i == Model.accountPagging.page ? "active" : "")">@i</a>
+                }
+
+                // Nếu trang hiện tại nhỏ hơn tổng số trang trừ 3, hiển thị "..." trước trang cuối
+                if (Model.accountPagging.page < Model.accountPagging.total - 3)
+                {
+                    <span>...</span>
+                }
+
+                // Hiển thị trang cuối cùng
+                <a href="/Admins/ManageUser/@Model.accountPagging.total" class="@(Model.accountPagging.page == Model.accountPagging.total ? "active" : "")">@Model.accountPagging.total</a>
+            }
+        </div>
+
+    </div>
+</body>
+</html>
+
+

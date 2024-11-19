@@ -1,0 +1,148 @@
+﻿@page "/Admins/ManageProject/{statusFilter?}/{titleSearch?}/{index?}"
+@model Web.Pages.Admins.ManageProjectModel
+@{
+    int count = 1;
+}
+<style>
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f4f4f4;
+        }
+
+    .filter-section {
+        margin-bottom: 20px;
+    }
+
+        .filter-section form {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .filter-section select,
+        .filter-section input {
+            padding: 5px;
+        }
+
+        .filter-section button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+    .pagination-section {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .pagination {
+        display: inline-block;
+        list-style-type: none;
+        padding: 0;
+    }
+
+        .pagination li {
+            display: inline;
+            margin: 0 5px;
+        }
+
+            .pagination li a {
+                text-decoration: none;
+                padding: 8px 16px;
+                background-color: #007bff;
+                color: white;
+                border-radius: 5px;
+            }
+
+            .pagination li.active a {
+                background-color: #333;
+            }
+
+</style>
+<div class="filter-section">
+    <form method="GET">
+        <!-- Bộ lọc -->
+        <label for="statusFilter">Trạng thái dự án:</label>
+        <select id="statusFilter" name="statusFilter">
+            <option value="all" selected="@(Model.status=="all")">Tất cả</option>
+            <option value="Hiring" selected="@(Model.status=="Hiring")">Đang trong thời gian báo giá</option>
+            <option value="Done" selected="@(Model.status=="Done")">Đã chọn người cho dự án</option>
+            <option value="Wating" selected="@(Model.status=="Wating")">Đang chờ chọn người cho dự án</option>
+            <option value="Cancel" selected="@(Model.status=="Cancel")">Đã đóng</option>
+        </select>
+
+        <!-- Ô input để tìm kiếm theo tiêu đề -->
+        <label for="titleSearch">Tìm kiếm tiêu đề:</label>
+        <input type="text" id="titleSearch" name="titleSearch" value="@Model.title" placeholder="Nhập tiêu đề dự án">
+
+        <!-- Nút submit để áp dụng bộ lọc -->
+        <button type="submit">Tìm kiếm</button>
+    </form>
+</div>
+
+<div class="project-table-section">
+    <!-- Bảng quản lý dự án -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Title</th>
+                <th>Người đăng</th>
+                <th>Người nhận</th>
+                <th>Số lượt báo giá</th>
+                <th>Ngày hết hạn</th>
+                <th>Trạng thái</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Vòng lặp để hiển thị dữ liệu từ phía server -->
+            @foreach (var project in Model.Project.Projects)
+            {
+                <tr>
+                    <td>@(count++)</td>
+                    <td>@project.Title</td>
+                    <td>@project.Poster</td>
+                    <td>@project.Receiver</td>
+                    <td>@project.BidCount</td>
+                    <td>@project.ExpirationDate.ToString("dd/MM/yyyy")</td>
+                    <td>@project.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Phân trang -->
+<div class="pagination-section">
+    <ul class="pagination">
+        <!-- Điều hướng phân trang -->
+        @if (Model.Project.CurrentPage > 1)
+        {
+            <li><a href="/Admins/ManageProject?statusFilter=@Model.status&titleSearch=@Model.title&index=@(Model.Project.CurrentPage - 1)">Previous</a></li>
+        }
+
+        @for (var i = 1; i <= Model.Project.TotalPages; i++)
+        {
+            <li class="@(i == Model.Project.CurrentPage ? "active" : "")">
+                <a href="/Admins/ManageProject?statusFilter=@Model.status&titleSearch=@Model.title&index=@i">@i</a>
+            </li>
+        }
+
+        @if (Model.Project.CurrentPage < Model.Project.TotalPages)
+        {
+            <li><a href="/Admins/ManageProject?statusFilter=@Model.status&titleSearch=@Model.title&index=@(Model.Project.CurrentPage + 1)">Next</a></li>
+        }
+    </ul>
+</div>

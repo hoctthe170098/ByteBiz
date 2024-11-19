@@ -1,0 +1,365 @@
+﻿@page "/Customers/ViewListProject/{status}/{index?}"
+@model Web.Pages.Customers.ViewListProjectModel
+@{
+    int count = 1;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Table with Pagination</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        .table-container {
+            width: 80%;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        thead {
+            background-color: #007bff;
+            color: white;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .action-icons a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+            .action-icons a.update {
+                color: #28a745;
+            }
+
+            .action-icons a.delete {
+                color: #dc3545;
+            }
+
+        /* Styling for pagination */
+        .pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+            .pagination a {
+                color: #007bff;
+                padding: 10px 15px;
+                text-decoration: none;
+                border-radius: 5px;
+                margin: 0 5px;
+                border: 1px solid #ddd;
+                transition: background-color 0.3s ease;
+            }
+
+                .pagination a:hover {
+                    background-color: #007bff;
+                    color: white;
+                }
+
+                .pagination a.active {
+                    background-color: #007bff;
+                    color: white;
+                    border: 1px solid #007bff;
+                }
+        /* Style cho popup chung */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .close-popup, .confirm-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .close-popup {
+            background-color: red;
+        }
+
+        .confirm-button {
+            background-color: green;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+        /* Thiết lập cho thẻ cảnh báo */
+        .alert-warning {
+            padding: 15px;
+            background-color: #f8d7da; /* Màu nền đỏ nhạt */
+            color: #721c24; /* Màu chữ đỏ đậm */
+            border-left: 6px solid #f5c6cb; /* Viền bên trái nổi bật */
+            border-radius: 5px; /* Bo góc nhẹ */
+            margin-bottom: 20px; /* Khoảng cách dưới */
+            font-family: Arial, sans-serif; /* Font chữ */
+            position: relative; /* Để hỗ trợ các phần tử bên trong */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Tạo bóng nhẹ */
+        }
+
+            /* Làm cho chữ đậm hơn cho phần "Lưu ý" */
+            .alert-warning strong {
+                font-weight: bold;
+                color: #721c24;
+            }
+
+            /* Hiệu ứng khi hover vào thẻ cảnh báo (nếu cần) */
+            .alert-warning:hover {
+                background-color: #f5c6cb; /* Thay đổi màu nền nhẹ khi hover */
+            }
+        /* Style cho popup */
+        .popupp {
+            display: none; /* Ẩn popup mặc định */
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Tạo hiệu ứng nền tối */
+            z-index: 9999;
+        }
+
+        .popup-contentt {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            margin: 15% auto;
+            text-align: center;
+        }
+
+        .btn-closee {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    @if (Model.projectPaggingDTO.StatusProject == "Wating")
+    {
+        <div class="alert-warning">
+            <strong>Lưu ý:</strong> Các dự án đã kết thúc báo giá và đang chờ sẽ phải chọn người làm trong vòng 10 ngày, nếu không dự án sẽ bị đóng và không thể chọn người làm nữa!
+        </div>
+    }
+    <div class="table-container">
+        @if (Model.projectPaggingDTO.StatusProject == "Hiring")
+        {
+            <h2>Các dự án đang chờ báo giá</h2>
+        }
+        @if (Model.projectPaggingDTO.StatusProject == "Done")
+        {
+            <h2>Các dự án đã chọn người làm</h2>
+        }
+        @if (Model.projectPaggingDTO.StatusProject == "Cancel")
+        {
+            <h2>Các dự án đã đóng</h2>
+        }
+        @if (Model.projectPaggingDTO.StatusProject == "Wating")
+        {
+            <h2>Các dự án đang chờ chọn người làm</h2>
+        }
+        <table>
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Tiêu đề</th>
+                    <th>Số lượt báo giá</th>
+                    <th>Người nhận</th>
+                    <th>Hạn nộp</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var project in Model.projectPaggingDTO.projects)
+                {
+                    <tr>
+                        <td>@(count++)</td>
+                        <td><a href="/Customers/ProjectDescription/@project.Id">@project.Title</a></td>
+                        <td>@project.BiddingCount</td>
+                        @if (project.ReceiverId != null)
+                        {
+                             <td><a href="/Customers/ViewInforFreelancer/@Model.projectPaggingDTO.StatusProject/@project.ReceiverId">@project.ReceiverName</a</td>
+                        }
+                        @if (project.ReceiverId == null)
+                        {
+                            <td>@project.ReceiverName</td>
+                        }
+                        <td>@project.EndDate.ToString("dd-MM-yyyy")</td>
+                        <td class="action-icons">
+                            <p hidden id="statusProject">@Model.projectPaggingDTO.StatusProject</p>
+                            <a href="/Customers/PostProject/@project.Id" class="update" id="updateButton"><i class="fas fa-edit"></i></a>
+                            <a href="/Customers/DeleteProject/@Model.projectPaggingDTO.StatusProject/@Model.projectPaggingDTO.page/@project.Id" class="delete" data-bidding-count="@project.BiddingCount">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+                <!-- Thêm các hàng khác tại đây -->
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            @for (int i = 1; i <= Model.projectPaggingDTO.total; i++)
+            {
+                if (i == Model.projectPaggingDTO.page)
+                {
+                    <a href="/Customers/ViewListProject/@Model.projectPaggingDTO.StatusProject/@i"
+                       class="active">@i</a>
+                }
+                else
+                {
+                    <a href="/Customers/ViewListProject/@Model.projectPaggingDTO.StatusProject/@i">@i</a>
+                }
+            }
+        </div>
+    </div>
+    <!-- Popup thông báo không thể xóa -->
+    <div id="popup-cannot-delete" class="popup">
+        <div class="popup-content">
+            <p>Không thể xoá dự án này vì đã có người báo giá</p>
+            <button class="close-popup">Đóng</button>
+        </div>
+    </div>
+
+    <!-- Popup xác nhận xóa -->
+    <div id="popup-confirm-delete" class="popup">
+        <div class="popup-content">
+            <p>Bạn có chắc chắn muốn xoá dự án này?</p>
+            <button id="confirm-delete" class="confirm-button">Có</button>
+            <button class="close-popup">Không</button>
+        </div>
+    </div>
+    <div id="errorPopup" class="popupp">
+        <div class="popup-contentt">
+            <p id="errorMessage"></p>
+            <button class="btn-closee" onclick="closePopup()">OK</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy tất cả các nút xóa
+            var deleteButtons = document.querySelectorAll(".delete");
+
+            // Xử lý khi click vào nút xóa
+            deleteButtons.forEach(function (button) {
+                button.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    var biddingCount = parseInt(button.getAttribute("data-bidding-count"));
+                    if (biddingCount > 0) {
+                        // Hiển thị popup không thể xóa
+                        document.getElementById("popup-cannot-delete").style.display = "flex";
+                    } else {
+                        selectedUrl = button.getAttribute("href");
+                        // Hiển thị popup xác nhận xóa
+                        document.getElementById("popup-confirm-delete").style.display = "flex";
+                    }
+                });
+            });
+
+            // Đóng popup khi nhấn nút "Đóng" hoặc "Không"
+            var closeButtons = document.querySelectorAll(".close-popup");
+            closeButtons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    button.closest(".popup").style.display = "none";
+                });
+            });
+
+            // Xử lý khi người dùng chọn "Có" trong popup xác nhận xóa
+            document.getElementById("confirm-delete").addEventListener("click", function () {
+                if (selectedUrl) {
+                    // Chuyển hướng đến URL xóa
+                    window.location.assign(selectedUrl);
+                }
+            });
+        });
+        document.getElementById("updateButton").addEventListener("click", function (event) {
+            event.preventDefault(); // Ngăn điều hướng mặc định của nút update
+
+            // Lấy trạng thái dự án
+            var status = document.getElementById("statusProject").innerText;
+            var popup = document.getElementById("errorPopup");
+            var errorMessage = document.getElementById("errorMessage");
+
+            // Kiểm tra trạng thái
+            if (status !== "Hiring") {
+                // Nếu trạng thái khác Hiring, hiển thị thông báo lỗi
+                errorMessage.innerText = "Không thể cập nhật dự án này!";
+                popup.style.display = "block";
+            } else {
+                // Nếu trạng thái là Hiring, điều hướng đến đường dẫn của nút
+                window.location.href = document.getElementById("updateButton").getAttribute("href");
+            }
+        });
+
+        // Hàm đóng popup
+        function closePopup() {
+            document.getElementById("errorPopup").style.display = "none";
+        }
+    </script>
+</body>
+</html>
+

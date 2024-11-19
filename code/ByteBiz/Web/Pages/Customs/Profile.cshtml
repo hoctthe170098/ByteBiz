@@ -1,0 +1,425 @@
+﻿@page "/Customs/Profile/{Error?}"
+@model Web.Pages.Customs.ProfileModel
+@{
+}
+<style>
+    .disabled-btn {
+        pointer-events: none;
+        opacity: 0.6;
+    }
+</style>
+<div class="container-fluid published-recuitment-wrapper">
+    <div class="container published-recuitment-content">
+        <div class="row">
+            <div class="col-md-8 col-sm-12 col-12 recuitment-inner">
+                @if (Model.error != null)
+                {
+                    <div id="errorMessage" style=" padding: 10px; margin-top: 20px; border: 1px solid red; background-color: #ffe6e6; color: red; border-radius: 5px;">
+                        <i class="fa fa-exclamation-circle" style="margin-right: 5px;"></i> @Model.error
+                    </div>
+                }
+                <form class="employee-form" method="post" enctype="multipart/form-data">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card recuitment-card">
+                            <div class="card-header recuitment-card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <a class="btn btn-link btn-block text-left recuitment-header" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Thông tin tài khoản
+                                        <span id="clickc1_advance2" class="clicksd">
+                                            <i class="fa fa fa-angle-up"></i>
+                                        </span>
+                                    </a>
+                                </h2>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body recuitment-body row">
+                                    <div class="col-md-3">
+                                        <div class="avatar-upload">
+                                            <div class="avatar-edit">
+                                                @if (Model.ProfileDTO.Avatar == "")
+                                                {
+                                                    <input type='file' name="avatar" id="imageUpload" accept=".png, .jpg, .jpeg" required />
+                                                    <label for="imageUpload"></label>
+                                                }
+                                                @if (Model.ProfileDTO.Avatar != "")
+                                                {
+                                                    <input type='file' name="avatar" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                                    <label for="imageUpload"></label>
+                                                    <input type="text" name="avatarUrl" class="form-control"
+                                                           value="@Model.ProfileDTO.Avatar" hidden>
+                                                }                                              
+                                            </div>
+                                            <div class="avatar-preview">
+                                                <div id="imagePreview" style="background-image: url('@Url.Content(Model.ProfileDTO.Avatar)');">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Họ tên<span style="color: red" class="pl-2">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Nhập họ và tên" 
+                                                value="@Model.ProfileDTO.FullName" required>
+                                                <input type="text" name="userid" class="form-control" 
+                                                       value="@Model.ProfileDTO.UserId" hidden>
+                                                <span id="nameError" style="color: red; font-size: 14px; display: none;">Tên không được dài hơn 30 ký tự.</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Vai trò</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" value="@Model.ProfileDTO.Role" disabled="true" name="role">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Số điện thoại</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="phonenumber" name="phonenumber" class="form-control" 
+                                                value="@Model.ProfileDTO.PhoneNumber">
+                                                <span id="phoneError" style="color: red; font-size: 14px; display: none;">Số điện thoại không hợp lệ</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Email</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" name="email" class="form-control" value="@Model.ProfileDTO.Email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Ngày sinh<span style="color: red" class="pl-2">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type="date" id="date" name="date" class="form-control" value="@Model.ProfileDTO.Dob.ToString("yyyy-MM-dd")" required>
+                                                <span id="dateError" style="color: red; font-size: 14px; display: none;">Bạn phải lớn hơn 18 tuổi</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Biệt danh</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="skype" name="skype" class="form-control" value="@Model.ProfileDTO.Skype">
+                                                <span id="skyteError" style="color: red; font-size: 14px; display: none;">Độ dài biệt danh nhỏ hơn 10</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Chỗ ở hiện tại<span style="color: red" class="pl-2">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="address" name="address" class="form-control" placeholder="Nhập địa chỉ" 
+                                                value="@Model.ProfileDTO.Address" required>
+                                                <span id="addressError" style="color: red; font-size: 14px; display: none;">Độ dài địa chỉ nhỏ hơn 50</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Link facebook<span style="color: red" class="pl-2">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="flink" name="flink" class="form-control" placeholder="Nhập link facebook"
+                                                       value="@Model.ProfileDTO.FacebookLink" required>                                               
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label text-right label">Link liên hệ khác</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="olink" name="olink" class="form-control" placeholder="Nhập link liên hệ khác"
+                                                       value="@Model.ProfileDTO.OtherLink" >
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card recuitment-card">
+                            <div class="card-header recuitment-card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                    <a class="btn btn-link btn-block text-left collapsed recuitment-header" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Căn cước công dân
+                                        <span id="clickc1_advance1" class="clicksd">
+                                            <i class="fa fa fa-angle-up"></i>
+                                        </span>
+                                    </a>
+                                </h2>
+                            </div>
+                            <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-body recuitment-body">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label text-right label">Số căn cước<span style="color: red" class="pl-2">*</span></label>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="identifierid" name="identifierid" class="form-control" placeholder="Nhập số căn cước"
+                                                   value="@Model.ProfileDTO.IdentifierId" required>
+                                            <span id="identifieridError" style="color: red; font-size: 14px; display: none;">Số căn cước phải nhỏ hơn 13 số</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-body recuitment-body">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label text-right label">Họ và tên<span style="color: red" class="pl-2">*</span></label>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="identifiername" name="identifiername" class="form-control" placeholder="Nhập họ và tên"
+                                            value="@Model.ProfileDTO.IdentifierName">
+                                            <span id="identifiernameError" style="color: red; font-size: 14px; display: none;">Độ dài tên nhỏ hơn 30</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rec-submit">
+                        <button type="submit" id="btnsubmit" class="btn-submit-recuitment mb-3 ml-3" name="">
+                            <i class="fa fa-floppy-o pr-2"></i>Lưu Hồ Sơ
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+            <!-- Side bar -->
+            <div class="col-md-4 col-sm-12 col-12">
+                <div class="recuiter-info">
+                    <div class="recuiter-info-avt">
+                        <img src="@Url.Content(Model.ProfileDTO.Avatar)">
+                    </div>
+                    <div class="clearfix list-rec">
+                        <h4>@Model.ProfileDTO.FullName</h4>
+                        <ul>
+                            @if (Model.ProfileDTO.Role == "Freelancer")
+                            {
+                                <li><a href="#">Dự án đang báo giá <strong>(@Model.ProjectCountDTO.ProjectBidding)</strong></a></li>
+                                <li><a href="#">Dự án đang chờ <strong>(@Model.ProjectCountDTO.ProjectWaiting)</strong></a></li>
+                                <li><a href="#">Dự án đã nhận <strong>(@Model.ProjectCountDTO.ProjectDone)</strong></a></li>
+                            }
+                            @if (Model.ProfileDTO.Role == "Customer")
+                            {
+                                <li><a href="#">Dự án đang chờ báo giá <strong>(@Model.ProjectCountDTO.ProjectBidding)</strong></a></li>
+                                <li><a href="#">Dự án đang chờ chọn người làm<strong>(@Model.ProjectCountDTO.ProjectWaiting)</strong></a></li>
+                                <li><a href="#">Dự án đã chọn người làm<strong>(@Model.ProjectCountDTO.ProjectDone)</strong></a></li>
+                                <li><a href="#">Dự án đã đóng<strong>(@Model.ProjectCountDTO.ProjectCancel)</strong></a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="block-sidebar" style="margin-bottom: 20px;">
+                    <header>
+                        <h3 class="title-sidebar font-roboto bg-primary">
+                            Trung tâm quản lý
+                        </h3>
+                    </header>
+                    <div class="content-sidebar menu-trung-tam-ql menu-ql-employer">
+                        <h3 class="menu-ql-ntv">
+                            Hồ sơ của bạn
+                        </h3>
+                        <ul>
+                            <li>
+                                <a href="/Customs/Profile">
+                                    Quản lý Tài khoản
+                                </a>
+                            </li>
+                            @if (Model.ProfileDTO.Role == "Freelancer")
+                            {
+                                <li>
+                                    <a href="/Freelancers/CV">
+                                        Quản lý CV
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                        <h3 class="menu-ql-ntv">
+                            Hỗ trợ và thông báo
+                        </h3>
+                        <ul>
+                            <li>
+                                <a href="/UpdateFeature" title="Ban quản trị thông báo">
+                                    Ban quản trị thông báo
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/UpdateFeature" title="Hướng dẫn thao tác">
+                                    Hướng dẫn thao tác
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/UpdateFeature" target="_blank">
+                                    <span>Thông tin thanh toán</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="logout">
+                                <a href="/Accounts/Logout" title="Đăng xuất">
+                                    Đăng xuất
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    // Avatar upload and preview
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                // $('#imagePreview').hide();
+                // $('#imagePreview').fadeIn(650);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#imageUpload").change(function () {
+        readURL(this);
+    });
+</script>
+<script>
+    const fullnameInput = document.getElementById('fullname');
+    const errorSpan = document.getElementById('nameError');
+    const phoneInput = document.getElementById('phonenumber');
+    const phoneErrorSpan = document.getElementById('phoneError');
+    const dateInput = document.getElementById('date');
+    const dateErrorSpan = document.getElementById('dateError');
+    const skypeInput = document.getElementById('skype');
+    const skypeErrorSpan = document.getElementById('skyteError');
+    const addressInput = document.getElementById('address');
+    const addressErrorSpan = document.getElementById('addressError');
+    const identifierIdInput = document.getElementById('identifierid');
+    const identifierIdErrorSpan = document.getElementById('identifieridError');
+    const identifierNameInput = document.getElementById('identifiername');
+    const identifierNameErrorSpan = document.getElementById('identifiernameError');
+    const submitButton = document.getElementById('btnsubmit');
+
+    // Hàm kiểm tra độ dài tên
+    function validateName() {
+        const fullname = fullnameInput.value.trim();
+        if (fullname.length > 30) {
+            errorSpan.style.display = 'inline';
+            submitButton.classList.add('disabled-btn');
+            submitButton.disabled = true;
+        } else {
+            errorSpan.style.display = 'none';
+            submitButton.classList.remove('disabled-btn');
+            submitButton.disabled = false;
+        }
+    }
+
+    // Hàm kiểm tra số điện thoại
+    function validatePhone() {
+        const phoneNumber = phoneInput.value.trim();
+        const phoneRegex = /^0\d{9}$/;
+        if (!phoneRegex.test(phoneNumber)) {
+            phoneErrorSpan.style.display = 'inline';
+            submitButton.classList.add('disabled-btn');
+            submitButton.disabled = true;
+        } else {
+            phoneErrorSpan.style.display = 'none';
+            submitButton.classList.remove('disabled-btn');
+            submitButton.disabled = false;
+        }
+    }
+
+    // Hàm kiểm tra tuổi người dùng
+    function validateDate() {
+        const birthDate = new Date(dateInput.value);
+        const today = new Date();
+        const age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        if (age < 18) {
+            dateErrorSpan.style.display = 'inline';
+            submitButton.classList.add('disabled-btn');
+            submitButton.disabled = true;
+        } else {
+            dateErrorSpan.style.display = 'none';
+            submitButton.classList.remove('disabled-btn');
+            submitButton.disabled = false;
+        }
+    }
+
+    // Hàm kiểm tra Skype ID
+    function validateSkype() {
+        const skype = skypeInput.value.trim();
+        if (skype.length >= 10) {
+            skypeErrorSpan.style.display = 'inline';
+            submitButton.classList.add('disabled-btn');
+            submitButton.disabled = true;
+        } else {
+            skypeErrorSpan.style.display = 'none';
+            submitButton.classList.remove('disabled-btn');
+            submitButton.disabled = false;
+        }
+    }
+
+    // Hàm kiểm tra địa chỉ
+    function validateAddress() {
+        const address = addressInput.value.trim();
+        if (address.length >= 50) {
+            addressErrorSpan.style.display = 'inline';
+            submitButton.classList.add('disabled-btn');
+            submitButton.disabled = true;
+        } else {
+            addressErrorSpan.style.display = 'none';
+            submitButton.classList.remove('disabled-btn');
+            submitButton.disabled = false;
+        }
+    }
+
+    // Hàm kiểm tra số căn cước
+    function validateIdentifierId() {
+        const identifierId = identifierIdInput.value.trim();
+        const identifierRegex = /^\d{12}$/;
+        if (!identifierRegex.test(identifierId)) {
+            identifierIdErrorSpan.style.display = 'inline';
+            submitButton.classList.add('disabled-btn');
+            submitButton.disabled = true;
+        } else {
+            identifierIdErrorSpan.style.display = 'none';
+            submitButton.classList.remove('disabled-btn');
+            submitButton.disabled = false;
+        }
+    }
+
+    // Hàm kiểm tra tên căn cước
+    function validateIdentifierName() {
+        const identifierName = identifierNameInput.value.trim();
+        if (identifierName.length >= 30) {
+            identifierNameErrorSpan.style.display = 'inline';
+            submitButton.classList.add('disabled-btn');
+            submitButton.disabled = true;
+        } else {
+            identifierNameErrorSpan.style.display = 'none';
+            submitButton.classList.remove('disabled-btn');
+            submitButton.disabled = false;
+        }
+    }
+
+    // Lắng nghe sự kiện input để kiểm tra
+    fullnameInput.addEventListener('input', validateName);
+    phoneInput.addEventListener('input', validatePhone);
+    dateInput.addEventListener('input', validateDate);
+    skypeInput.addEventListener('input', validateSkype);
+    addressInput.addEventListener('input', validateAddress);
+    identifierIdInput.addEventListener('input', validateIdentifierId);
+    identifierNameInput.addEventListener('input', validateIdentifierName);
+
+    // Ngăn submit form nếu có điều kiện không hợp lệ
+    document.getElementById('profileForm').addEventListener('submit', function (event) {
+        validateName();
+        validatePhone();
+        validateDate();
+        validateSkype();
+        validateAddress();
+        validateIdentifierId();
+        validateIdentifierName();
+
+        if (submitButton.disabled) {
+            event.preventDefault();
+        }
+    });
+</script>
+

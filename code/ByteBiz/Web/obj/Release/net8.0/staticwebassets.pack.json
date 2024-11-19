@@ -1,0 +1,569 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\Web.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Web.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\avatar\\02ddbf84-812d-4f34-7d42-08dced91c4cc_0-ky-hieu-thong-dung-tu-vung-tieng-han.jpg",
+      "PackagePath": "staticwebassets\\avatar\\02ddbf84-812d-4f34-7d42-08dced91c4cc_0-ky-hieu-thong-dung-tu-vung-tieng-han.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\avatar\\0dde672c-7b13-4c65-06aa-08dceccace1d_Bytebiz.png",
+      "PackagePath": "staticwebassets\\avatar\\0dde672c-7b13-4c65-06aa-08dceccace1d_Bytebiz.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\avatar\\0dde672c-7b13-4c65-06aa-08dceccace1d_download (1).jpg",
+      "PackagePath": "staticwebassets\\avatar\\0dde672c-7b13-4c65-06aa-08dceccace1d_download (1).jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\avatar\\456c5e83-3a27-4117-3471-08dcebad8dc2_Bytebiz.png",
+      "PackagePath": "staticwebassets\\avatar\\456c5e83-3a27-4117-3471-08dcebad8dc2_Bytebiz.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\avatar\\456c5e83-3a27-4117-3471-08dcebad8dc2_Co-Vietnam.png",
+      "PackagePath": "staticwebassets\\avatar\\456c5e83-3a27-4117-3471-08dcebad8dc2_Co-Vietnam.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\avatar\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_0-ky-hieu-thong-dung-tu-vung-tieng-han.jpg",
+      "PackagePath": "staticwebassets\\avatar\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_0-ky-hieu-thong-dung-tu-vung-tieng-han.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\avatar\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_Bytebiz.png",
+      "PackagePath": "staticwebassets\\avatar\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_Bytebiz.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\avatar\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_Co-Vietnam.png",
+      "PackagePath": "staticwebassets\\avatar\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_Co-Vietnam.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\avatar\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_Screenshot (7).png",
+      "PackagePath": "staticwebassets\\avatar\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_Screenshot (7).png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\avatar\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_fpt-logo.png",
+      "PackagePath": "staticwebassets\\avatar\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_fpt-logo.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\avatar\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_freelancer.jpg",
+      "PackagePath": "staticwebassets\\avatar\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_freelancer.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\avatar\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_istockphoto-462185765-170667a.png",
+      "PackagePath": "staticwebassets\\avatar\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_istockphoto-462185765-170667a.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\avatar\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_samsung_galaxy_s24_ultra_5g.jpg",
+      "PackagePath": "staticwebassets\\avatar\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_samsung_galaxy_s24_ultra_5g.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\avatar\\bd9f8f93-ab56-4101-7d43-08dced91c4cc_môn.jpg",
+      "PackagePath": "staticwebassets\\avatar\\bd9f8f93-ab56-4101-7d43-08dced91c4cc_môn.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\css\\line.png",
+      "PackagePath": "staticwebassets\\css\\line.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\css\\owlcarousel\\owl.carousel.min.css",
+      "PackagePath": "staticwebassets\\css\\owlcarousel\\owl.carousel.min.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\css\\owlcarousel\\owl.theme.default.min.css",
+      "PackagePath": "staticwebassets\\css\\owlcarousel\\owl.theme.default.min.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\css\\select2.min.css",
+      "PackagePath": "staticwebassets\\css\\select2.min.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\cv\\02ddbf84-812d-4f34-7d42-08dced91c4cc_CV_MaiMinhKhoi.pdf",
+      "PackagePath": "staticwebassets\\cv\\02ddbf84-812d-4f34-7d42-08dced91c4cc_CV_MaiMinhKhoi.pdf"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\cv\\02ddbf84-812d-4f34-7d42-08dced91c4cc_Đơn thực tập _ Học.pdf",
+      "PackagePath": "staticwebassets\\cv\\02ddbf84-812d-4f34-7d42-08dced91c4cc_Đơn thực tập _ Học.pdf"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\cv\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_CV_MaiMinhKhoi.pdf",
+      "PackagePath": "staticwebassets\\cv\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_CV_MaiMinhKhoi.pdf"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\cv\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_interview-web-resume.pdf",
+      "PackagePath": "staticwebassets\\cv\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_interview-web-resume.pdf"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\cv\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_mau-giay-tiep-nhan-sinh-vien-thuc-tap.pdf",
+      "PackagePath": "staticwebassets\\cv\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_mau-giay-tiep-nhan-sinh-vien-thuc-tap.pdf"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\cv\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_userflownguoithue.drawio.pdf",
+      "PackagePath": "staticwebassets\\cv\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_userflownguoithue.drawio.pdf"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\cv\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_Đơn thực tập _ Học.pdf",
+      "PackagePath": "staticwebassets\\cv\\5e1de1b6-ba22-40aa-2f8c-08dce6dea536_Đơn thực tập _ Học.pdf"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\Bytebiz.png",
+      "PackagePath": "staticwebassets\\img\\Bytebiz.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\HINH.png",
+      "PackagePath": "staticwebassets\\img\\HINH.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\Pasona-Tech-logo.jpg",
+      "PackagePath": "staticwebassets\\img\\Pasona-Tech-logo.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\SCS_Logo_original.png",
+      "PackagePath": "staticwebassets\\img\\SCS_Logo_original.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\ads1.jpg",
+      "PackagePath": "staticwebassets\\img\\ads1.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\alipay-logo.png",
+      "PackagePath": "staticwebassets\\img\\alipay-logo.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\banner-login.png",
+      "PackagePath": "staticwebassets\\img\\banner-login.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\banner2.jpg",
+      "PackagePath": "staticwebassets\\img\\banner2.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\fitech-logo.jpg",
+      "PackagePath": "staticwebassets\\img\\fitech-logo.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\fpt-logo.png",
+      "PackagePath": "staticwebassets\\img\\fpt-logo.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\grab-vietnam.png",
+      "PackagePath": "staticwebassets\\img\\grab-vietnam.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\hdbank-logo.png",
+      "PackagePath": "staticwebassets\\img\\hdbank-logo.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\hna.jpg",
+      "PackagePath": "staticwebassets\\img\\hna.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\hna2.jpg",
+      "PackagePath": "staticwebassets\\img\\hna2.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\home-credit.png",
+      "PackagePath": "staticwebassets\\img\\home-credit.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\ic1.png",
+      "PackagePath": "staticwebassets\\img\\ic1.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\ic2.png",
+      "PackagePath": "staticwebassets\\img\\ic2.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\ic3.png",
+      "PackagePath": "staticwebassets\\img\\ic3.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\ic4.png",
+      "PackagePath": "staticwebassets\\img\\ic4.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\icon_avatar.jpg",
+      "PackagePath": "staticwebassets\\img\\icon_avatar.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\logo.jpg",
+      "PackagePath": "staticwebassets\\img\\logo.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\luxoft-vietnam-logo.png",
+      "PackagePath": "staticwebassets\\img\\luxoft-vietnam-logo.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\mess.jpg",
+      "PackagePath": "staticwebassets\\img\\mess.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\news1.jpg",
+      "PackagePath": "staticwebassets\\img\\news1.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\news2.jpg",
+      "PackagePath": "staticwebassets\\img\\news2.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\news3.png",
+      "PackagePath": "staticwebassets\\img\\news3.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\nexon-networks-logo.png",
+      "PackagePath": "staticwebassets\\img\\nexon-networks-logo.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\novaon-digital-group-logo.png",
+      "PackagePath": "staticwebassets\\img\\novaon-digital-group-logo.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\nvg-logo.png",
+      "PackagePath": "staticwebassets\\img\\nvg-logo.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\qc1.jpg",
+      "PackagePath": "staticwebassets\\img\\qc1.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\qc2.jpg",
+      "PackagePath": "staticwebassets\\img\\qc2.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\support-bg.jpg",
+      "PackagePath": "staticwebassets\\img\\support-bg.jpg"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\tech-base-logo.png",
+      "PackagePath": "staticwebassets\\img\\tech-base-logo.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\techcombank-logo.png",
+      "PackagePath": "staticwebassets\\img\\techcombank-logo.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\techjobs_bgb.png",
+      "PackagePath": "staticwebassets\\img\\techjobs_bgb.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\techjobs_bgw.png",
+      "PackagePath": "staticwebassets\\img\\techjobs_bgw.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\img\\toshiba-logo.png",
+      "PackagePath": "staticwebassets\\img\\toshiba-logo.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\js\\jobdata.js",
+      "PackagePath": "staticwebassets\\js\\jobdata.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\js\\jquery-3.4.1.slim.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery-3.4.1.slim.min.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\js\\owlcarousel\\jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\owlcarousel\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\js\\owlcarousel\\owl.carousel.js",
+      "PackagePath": "staticwebassets\\js\\owlcarousel\\owl.carousel.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\js\\pagination.js",
+      "PackagePath": "staticwebassets\\js\\pagination.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\js\\popper.min.js",
+      "PackagePath": "staticwebassets\\js\\popper.min.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\js\\readmore.js",
+      "PackagePath": "staticwebassets\\js\\readmore.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\js\\select2.min.js",
+      "PackagePath": "staticwebassets\\js\\select2.min.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\banner-login.png",
+      "PackagePath": "staticwebassets\\lib\\banner-login.png"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "D:\\FPT\\Fall24\\EXE211\\code\\ByteBiz\\Web\\wwwroot\\lib\\techjobs_bgw.png",
+      "PackagePath": "staticwebassets\\lib\\techjobs_bgw.png"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.Web.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.build.Web.props",
+      "PackagePath": "build\\Web.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Web.props",
+      "PackagePath": "buildMultiTargeting\\Web.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildTransitive.Web.props",
+      "PackagePath": "buildTransitive\\Web.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

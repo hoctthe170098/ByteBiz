@@ -1,0 +1,283 @@
+﻿@page "/Freelancers/CV/{Error?}"
+@model Web.Pages.Freelancers.CVModel
+@{
+}
+<div class="container-fluid published-recuitment-wrapper">
+    <div class="container published-recuitment-content">
+        <div class="row">
+            <div class="col-md-8 col-sm-12 col-12 recuitment-inner">
+                @if (Model.error != null)
+                {
+                    <div id="errorMessage" style=" padding: 10px; margin-top: 20px; border: 1px solid red; background-color: #ffe6e6; color: red; border-radius: 5px;">
+                        <i class="fa fa-exclamation-circle" style="margin-right: 5px;"></i> @Model.error
+                    </div>
+                }
+                <form class="employee-form" id="recuitmentForm" method="post" enctype="multipart/form-data">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card recuitment-card">
+                            <div class="card-header recuitment-card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                    <a class="btn btn-link btn-block text-left collapsed recuitment-header" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        File đính kèm
+                                        <span id="clickc1_advance3" class="clicksd">
+                                            <i class="fa fa fa-angle-up"></i>
+                                        </span>
+                                    </a>
+                                </h2>
+                            </div>
+                            <input name="userid" value="@Model.CvDTO.UserId" hidden/>
+                            <input type="text" name="usercvimg" value="@Model.CvDTO.UserCVImg" hidden />
+                            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div class="card-body recuitment-body">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label text-right label">Chọn hồ sơ đính kèm<span style="color: red" class="pl-2">*</span></label>
+                                        <div class="col-sm-9">
+                                            @if (Model.CvDTO.UserCVImg == "")
+                                            {
+                                                <input type="file" id="file" name="cvupload" class="recuitment-card-acttachment" accept=".pdf" required />
+                                                <label for="file" class="btn-1"><i class="fa fa-paperclip pr-2"></i>Chọn file</label>
+                                            }
+                                            
+                                            @if (Model.CvDTO.UserCVImg != "")
+                                            {
+                                                <input type="file" id="file" name="cvupload" class="recuitment-card-acttachment" accept=".pdf" />                                              
+                                                <label for="file" class="btn-1"><i class="fa fa-paperclip pr-2"></i>Chọn file</label>
+                                                <a id="viewSavedFile" href="@Url.Content(Model.CvDTO.UserCVImg)" target="_blank">Xem file đã chọn trước đó</a>
+                                            }                                          
+                                            <!-- jQuery lấy tên file -->
+                                            <script>
+                                                $(document).ready(function () {
+                                                    $('.recuitment-card-acttachment').change(function (e) {
+                                                        // Kiểm tra nếu thẻ #viewSavedFile không tồn tại hoặc không có href (người dùng lần đầu cập nhật file)
+                                                        var viewSavedFile = $('#viewSavedFile');
+                                                        if (!viewSavedFile.length || !viewSavedFile.attr('href')) {
+                                                            var file = e.target.files[0];
+                                                            var fileName = file.name;
+
+                                                            // Tạo URL tạm thời cho file
+                                                            var fileURL = URL.createObjectURL(file);
+
+                                                            // Cập nhật nội dung cho tên file và gán URL vào link
+                                                            $("#previewFileName").html('<a href="' + fileURL + '" target="_blank">' + fileName + '</a>');
+
+                                                            // Hiển thị biểu tượng hoặc thay đổi giao diện theo yêu cầu
+                                                            $(".output-file").append('<style>.output-file:before{display:inline-block !important;}</style>');
+                                                        }
+                                                    });
+                                                });
+
+                                                $(document).ready(function () {
+                                                    $('.recuitment-card-acttachment').change(function (e) {
+                                                        var file = e.target.files[0];
+
+                                                        // Kiểm tra nếu file là PDF
+                                                        if (file && file.type === "application/pdf") {
+                                                            var fileName = file.name;
+                                                            var fileURL = URL.createObjectURL(file); // Tạo URL tạm thời cho file mới
+
+                                                            // Cập nhật link để xem file mới
+                                                            $('#viewSavedFile')
+                                                                .attr('href', fileURL)
+                                                                .text("Xem file mới: " + fileName);
+                                                        } else {
+                                                            alert("Vui lòng chọn tệp PDF!");
+                                                            $(this).val(''); // Reset input nếu không phải file PDF
+                                                        }
+                                                    });
+                                                });
+                                            </script>
+                                            <p class="output-file">
+                                                <span id="previewFileName"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card recuitment-card">
+                            <div class="card-header recuitment-card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                    <a class="btn btn-link btn-block text-left collapsed recuitment-header" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Thông tin chung
+                                        <span id="clickc1_advance1" class="clicksd">
+                                            <i class="fa fa fa-angle-up"></i>
+                                        </span>
+                                    </a>
+                                </h2>
+                            </div>
+                            <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-body recuitment-body">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label text-right label">Chức danh<span style="color: red" class="pl-2">*</span></label>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="shortIntro" class="form-control" name="professionaltitle"
+                                                   placeholder="Giới thiệu ngắn gọn" value="@Model.CvDTO.ProfessionalTitle" required>
+                                            <span id="shortIntroError" class="error-message" 
+                                            style="display: none; color: red;">Chức danh không được vượt quá 50 ký tự</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label text-right label">Giới thiệu bản thân<span style="color: red" class="pl-2">*</span></label>
+                                        <div class="col-sm-9">
+                                            <textarea id="fullIntro" class="form-control" name="introdution" 
+                                            placeholder="Giới thiệu đầy đủ về chuyên môn và những kinh nghiệm bạn từng có" rows="5" required>@Model.CvDTO.Introdution</textarea>
+                                            <span id="fullIntroError" class="error-message" style="display: none; color: red;">Giới thiệu không được quá 200 ký tự</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label text-right label">Link website cá nhân</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="personalLink" name="websiteurl" class="form-control" value="@Model.CvDTO.WebsiteUrl"
+                                            placeholder="Nhập link cá nhân(nếu có)">
+                                            <span id="personalLinkError" class="error-message" style="display: none; color: red;">Link không được vượt quá 100 ký tự</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label text-right label">Trình độ cao nhất<span style="color: red" class="pl-2">*</span></label>
+                                        <div class="col-sm-9">
+                                            <select type="text" class="form-control" id="jobLevel" name="level">
+                                                @if (Model.CvDTO.Level == "")
+                                                {
+                                                    <option disabled="true" value="">Chọn trình độ</option>
+                                                }
+                                                @if (Model.CvDTO.Level != "")
+                                                {
+                                                    <option value="@Model.CvDTO.Level">Chọn trình độ</option>
+                                                }
+                                                <option value="Đại học">Đại học</option>
+                                                <option value="Cao đẳng">Cao đẳng</option>
+                                                <option value="Mới đi làm">Mới đi làm</option>
+                                                <option value="Đã có kinh nghiệm">Đã có kinh nghiệm</option>
+                                                <option value="Chuyên gia">Chuyên gia</option>
+                                                <option value="Chứng chỉ">Chứng chỉ</option>
+                                                <option value="Lao động phổ thông">Lao động phổ thông</option>
+                                            </select>
+                                            @if (Model.CvDTO.Level != "")
+                                            {
+                                                <label class="col-form-label text-right label">Trình độ đã chọn: @Model.CvDTO.Level</label>
+                                            }
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label text-right label">Lĩnh vực<span style="color: red" class="pl-2">*</span></label>
+                                        <div class="col-sm-9">
+                                            <select type="text" class="form-control" id="jobExperience" name="field">
+                                                <option disabled="true" value="">Chọn Lĩnh vực</option>
+                                                @foreach(var field in Model.Fields)
+                                                {
+                                                    if (Model.CvDTO.FieldId == field.Id)
+                                                    {
+                                                        <option value="@field.Id" selected>@field.Name</option>
+                                                    }
+                                                    if (Model.CvDTO.FieldId != field.Id)
+                                                    {
+                                                        <option value="@field.Id">@field.Name</option>
+                                                    }                                                 
+                                                }
+                                            </select>
+                                            @if (Model.CvDTO.FieldName != "")
+                                            {
+                                                <label class="col-form-label text-right label">Lĩnh vực đã chọn: @Model.CvDTO.FieldName</label>
+                                            }                                        
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label text-right label">Kỹ năng chính<span style="color: red" class="pl-2">*</span></label>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="skills" name="skill" class="form-control" value="@Model.CvDTO.Skill" placeholder="Nhập kỹ năng bạn có" required>
+                                            <span id="skillsError" class="error-message" style="display: none; color: red;">Kỹ năng không được vượt quá 100 ký tự</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="rec-submit">
+                        <button type="submit" id="submitBtn" class="btn-submit-recuitment mb-3 ml-3" disabled>
+                            <i class="fa fa-floppy-o pr-2"></i>Lưu Hồ Sơ
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const shortIntro = document.getElementById('shortIntro');
+        const fullIntro = document.getElementById('fullIntro');
+        const personalLink = document.getElementById('personalLink');
+        const skills = document.getElementById('skills');
+        const jobLevel = document.getElementById('jobLevel'); // Select element
+        const jobExperience = document.getElementById('jobExperience'); // Select element
+        const fileInput = document.getElementById('file'); // File input
+        const submitBtn = document.getElementById('submitBtn');
+
+        const shortIntroError = document.getElementById('shortIntroError');
+        const fullIntroError = document.getElementById('fullIntroError');
+        const personalLinkError = document.getElementById('personalLinkError');
+        const skillsError = document.getElementById('skillsError');
+
+        // Hàm kiểm tra validation
+        function validateForm() {
+            let isValid = true;
+
+            // Kiểm tra giới thiệu ngắn gọn
+            if (shortIntro.value.length > 50) {
+                shortIntroError.style.display = 'inline';
+                isValid = false;
+            } else {
+                shortIntroError.style.display = 'none';
+            }
+
+            // Kiểm tra giới thiệu đầy đủ
+            if (fullIntro.value.length > 200) {
+                fullIntroError.style.display = 'inline';
+                isValid = false;
+            } else {
+                fullIntroError.style.display = 'none';
+            }
+
+            // Kiểm tra link cá nhân
+            if (personalLink.value.length > 100) {
+                personalLinkError.style.display = 'inline';
+                isValid = false;
+            } else {
+                personalLinkError.style.display = 'none';
+            }
+
+            // Kiểm tra kỹ năng
+            if (skills.value.length > 100) {
+                skillsError.style.display = 'inline';
+                isValid = false;
+            } else {
+                skillsError.style.display = 'none';
+            }
+
+            // Bật hoặc tắt nút submit dựa trên trạng thái hợp lệ
+            submitBtn.disabled = !isValid;
+        }
+
+        // Áp dụng sự kiện `input` cho các thẻ input và textarea
+        const inputs = document.querySelectorAll('input[type="text"], textarea');
+        inputs.forEach(input => {
+            input.addEventListener('input', validateForm);
+        });
+
+        // Áp dụng sự kiện `change` cho các thẻ select
+        const selects = document.querySelectorAll('select');
+        selects.forEach(select => {
+            select.addEventListener('change', validateForm);
+        });
+
+        // Lắng nghe sự thay đổi của file input
+        fileInput.addEventListener('change', validateForm);
+    });
+</script>
+
+
+
+

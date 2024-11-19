@@ -1,0 +1,313 @@
+﻿@page
+@model Web.Pages.Accounts.RegisterModel
+@using BusinessObjects.Models
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Register - TechJobs</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Roboto Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&display=swap" rel="stylesheet">
+
+	<!-- bootstrap css -->
+	<link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+
+	<!-- main css -->
+	<link rel="stylesheet" type="text/css" href="~/css/style.css">
+
+</head>
+<body>
+	<div class="container-fluid login-fluid clear-left clear-right">
+		<div class="login-container">
+			<!-- login header -->
+			<div class="login-header">
+				<div class="w-login m-auto">
+					<div class="login-logo">
+						<h3>
+							<!-- <a href="#">Tech<span class="txb-logo">Jobs.</span></a> -->
+							<a href="/Customs/Home">
+								<img src="~/img/Bytebiz.png" alt="TechJobs">
+							</a>
+						</h3>
+						<span class="login-breadcrumb"><em>/</em> Register</span>
+					</div>
+					<div class="login-right">
+						<a asp-page="/Customs/Home" class="btn btn-return">Trở về trang chủ</a>
+					</div>
+				</div>
+			</div>
+			<!-- (end) login header -->
+
+			<div class="clearfix"></div>
+
+			<div class="padding-top-90"></div>
+
+			<!-- login main -->
+			<div class="login-main">
+				<div class="w-login m-auto">
+					<div class="row">
+						<!-- login main descriptions -->
+						<div class="col-md-6 col-sm-12 col-12 login-main-left">
+							<img src="~/lib/banner-login.png">
+						</div>
+						<!-- login main form -->
+						<div class="col-md-6 col-sm-12 col-12 login-main-right">
+
+							<form class="login-form reg-form" method="post">
+								<div class="login-main-header">
+									<h3>Đăng Ký</h3>
+								</div>
+								<div class="input-div one">
+									<div class="div lg-lable">
+										<input id="username" type="text" name="username" class="input form-control-lgin" value="@Model.usernameT"
+											   oninput="validateUsername()" placeholder="Tên đăng nhập*" required>
+									</div>
+									<div id="usernameError" style="color: red; font-size: 12px; display: none;">
+										
+									</div>
+								</div>
+								<div class="input-div one">
+									<div class="div lg-lable">
+										<input id="email" type="email" name="email" class="input form-control-lgin" value="@Model.emailT"
+											   oninput="validateEmail()" placeholder="Email*" required>
+									</div>
+									<div id="emailError" style="color: red; font-size: 12px; display: none;">
+										
+									</div>
+								</div>
+								<div class="input-div one">
+									<div class="div lg-lable">				
+										<input id="phone" type="text" name="phonenumber" class="input form-control-lgin" value="@Model.phonenumberT"
+											   oninput="validatePhone()" required placeholder="Số điện thoại*">
+									</div>
+									<div id="phoneError" style="color: red; font-size: 12px; display: none;">
+										
+									</div>
+								</div>
+								<div class="input-div one">
+									<div class="div lg-lable">
+										<input id="password" type="password" name="password" class="input form-control-lgin" value="@Model.passwordT"
+											   required placeholder="Mật khẩu*" oninput="validatePassword()">
+									</div>
+									<div id="passwordError" style="color: red; font-size: 12px; display: none;">
+										
+									</div>
+								</div>
+								<div class="input-div one">
+									<div class="div lg-lable">
+										<input id="repass" type="password" name="repass" class="input form-control-lgin" value="@Model.repassT"
+											   placeholder="Nhập Lại Mật khẩu*" required oninput="validateRepass()">
+									</div>
+									<div id="repassError" style="color: red; font-size: 12px; display: none;">
+										
+									</div>
+								</div>
+								<div class="input-div one">
+									<div class="div lg-lable">									
+										<select class="form-control" name="roleName" >
+											<option class="input form-control-lgin" disabled>Chọn vai trò</option>
+											@foreach (var role in Model.Roles)
+											{
+												if (Model.roleNameT == role.Name)
+												{
+													<option class="input form-control-lgin"  value="@role.Name" selected>@role.Name</option>
+												}
+												else
+												{
+													<option class="input form-control-lgin"  value="@role.Name">@role.Name</option>
+												}
+											}
+										</select>
+									</div>
+								</div>
+								@if (Model.error != null)
+								{
+									<div style="border: 1px solid red; background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin: 20px 0; font-family: Arial, sans-serif;">
+										<strong>@Model.error</strong>
+									</div>
+								}
+								
+								<div class="form-group d-block frm-text">
+									<a href="#" class="fg-login d-inline-block"></a>
+									<a href="/Accounts/Login" class="fg-login float-right d-inline-block">Bạn đã có tài khoản? Đăng Nhập</a>
+								</div>
+								<button type="submit" id="submitBtn" class="btn btn-primary float-right btn-login d-block w-100">Đăng Ký</button>
+								@* <div class="form-group d-block w-100 mt-5">
+									<div class="text-or text-center">
+										<span>Hoặc</span>
+									</div>
+
+									<div class="row">
+										<div class="col-sm-6 col-12 pr-7">
+											<button class="btn btn-secondary btn-login-facebook btnw w-100 float-left">
+												<i class="fa fa-facebook" aria-hidden="true"></i>
+												<span>Đăng nhập bằng Facebook</span>
+											</button>
+										</div>
+										<div class="col-sm-6 col-12 pl-7">
+											<button class="btn btn-secondary btn-login-google btnw w-100 float-left">
+												<i class="fa fa-google" aria-hidden="true"></i>
+												<span>Đăng nhập bằng Google</span>
+											</button>
+										</div>
+									</div>
+								</div> *@
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- (end) login main -->
+		</div>
+	</div>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="js/jquery-3.4.1.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="js/main.js"></script>
+	<script>
+		function validateUsername() {
+			// Lấy giá trị của input username
+			var username = document.getElementById("username").value;
+			var submitBtn = document.getElementById("submitBtn");
+			// Biểu thức regex để kiểm tra ký tự đặc biệt (chỉ chấp nhận chữ cái và số)
+			var regex = /^[a-zA-Z0-9]+$/;
+
+			// Thẻ div chứa lỗi
+			var errorDiv = document.getElementById("usernameError");
+
+			// Kiểm tra độ dài và ký tự đặc biệt
+			if (username.length < 6) {
+				errorDiv.innerText = "Username không được ngắn hơn 6 ký tự.";
+				errorDiv.style.display = "block";
+				submitBtn.disabled = true;
+			}else if (username.length > 20) {
+				errorDiv.innerText = "Username không được dài hơn 20 ký tự.";
+				errorDiv.style.display = "block";
+				submitBtn.disabled = true;
+			} else if (!regex.test(username)) {
+				errorDiv.innerText = "Username không được chứa ký tự đặc biệt.";
+				errorDiv.style.display = "block";
+				submitBtn.disabled = true;
+			} else if (username === "") {
+				errorDiv.style.display = "none";
+				submitBtn.disabled = false;
+			}
+			else {
+				// Nếu hợp lệ, ẩn thông báo lỗi
+				errorDiv.style.display = "none";
+				submitBtn.disabled = false;
+			}
+		}
+		function validateEmail() {
+    // Lấy giá trị của input email
+    var email = document.getElementById("email").value;
+			var submitBtn = document.getElementById("submitBtn");
+
+    // Thẻ div chứa lỗi
+    var errorDiv = document.getElementById("emailError");
+
+    // Kiểm tra độ dài và định dạng email
+    if (email.length > 256) {
+        errorDiv.innerText = "Email không được dài hơn 256 ký tự.";
+        errorDiv.style.display = "block";
+				submitBtn.disabled = true;
+    } else if (email === "") {
+        errorDiv.style.display = "none";  // Nếu input trống, ẩn lỗi
+				submitBtn.disabled = false;
+    } else {
+        // Nếu hợp lệ, ẩn thông báo lỗi
+        errorDiv.style.display = "none";
+				submitBtn.disabled = false;
+    }
+}
+		function validatePhone() {
+			// Lấy giá trị của input phone
+			var phone = document.getElementById("phone").value;
+			var submitBtn = document.getElementById("submitBtn");
+			// Biểu thức regex để kiểm tra số điện thoại
+			var phoneRegex = /^0[0-9]{9}$/;
+
+			// Thẻ div chứa lỗi
+			var errorDiv = document.getElementById("phoneError");
+
+			// Kiểm tra độ dài và định dạng số điện thoại
+			if (!phoneRegex.test(phone)) {
+				errorDiv.innerText = "Số điện thoại phải bắt đầu bằng số 0 và có đúng 10 chữ số.";
+				errorDiv.style.display = "block";
+				submitBtn.disabled = true;
+			} else if (phone === "") {
+				errorDiv.style.display = "none";  // Nếu input trống, ẩn lỗi
+				submitBtn.disabled = false;
+			} else {
+				// Nếu hợp lệ, ẩn thông báo lỗi
+				errorDiv.style.display = "none";
+				submitBtn.disabled = false;
+			}
+		}
+		function validatePassword() {
+			// Lấy giá trị của input password
+			var password = document.getElementById("password").value;
+
+			// Biểu thức regex để kiểm tra password
+			var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+
+			// Thẻ div chứa lỗi
+			var errorDiv = document.getElementById("passwordError");
+			// Nút submit
+			var submitBtn = document.getElementById("submitBtn");
+
+			// Kiểm tra điều kiện của password
+			if (!passwordRegex.test(password)) {
+				errorDiv.innerText = "Mật khẩu phải có ít nhất 8 ký tự, bao gồm ít nhất 1 chữ hoa, 1 chữ cái thường, 1 chữ số và 1 ký tự đặc biệt(chú ý không được sử dụng .";
+				errorDiv.style.display = "block";
+				// Vô hiệu hóa nút submit
+				submitBtn.disabled = true;
+			} else if (password === "") {
+				errorDiv.style.display = "none";
+				// Kích hoạt lại nút submit
+				submitBtn.disabled = false;
+			} else {
+				// Nếu hợp lệ, ẩn thông báo lỗi và kích hoạt nút submit
+				errorDiv.style.display = "none";
+				submitBtn.disabled = false;
+			}
+		}
+		function validateRepass() {
+			// Lấy giá trị của input password và repass
+			var password = document.getElementById("password").value;
+			var repass = document.getElementById("repass").value;
+
+			// Thẻ div chứa lỗi
+			var errorDiv = document.getElementById("repassError");
+			// Nút submit
+			var submitBtn = document.getElementById("submitBtn");
+
+			// Kiểm tra xem repass có giống password không
+			if (repass !== password) {
+				errorDiv.innerText = "Mật khẩu không khớp. Vui lòng kiểm tra lại.";
+				errorDiv.style.display = "block";
+				// Vô hiệu hóa nút submit
+				submitBtn.disabled = true;
+			} else if (repass === "") {
+				errorDiv.style.display = "none";  // Nếu input trống, ẩn lỗi
+				// Kích hoạt lại nút submit
+				submitBtn.disabled = false;
+			} else {
+				// Nếu hợp lệ, ẩn thông báo lỗi và kích hoạt nút submit
+				errorDiv.style.display = "none";
+				submitBtn.disabled = false;
+			}
+		}
+
+	</script>
+</body>
+</html>

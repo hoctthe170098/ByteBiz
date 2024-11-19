@@ -1,0 +1,17 @@
+D:\FPT\Fall24\EXE211\code\ByteBiz\Repositories\bin\Debug\net8.0\Repositories.deps.json
+D:\FPT\Fall24\EXE211\code\ByteBiz\Repositories\bin\Debug\net8.0\Repositories.dll
+D:\FPT\Fall24\EXE211\code\ByteBiz\Repositories\bin\Debug\net8.0\Repositories.pdb
+D:\FPT\Fall24\EXE211\code\ByteBiz\Repositories\bin\Debug\net8.0\BusinessObjects.dll
+D:\FPT\Fall24\EXE211\code\ByteBiz\Repositories\bin\Debug\net8.0\DataAccess.dll
+D:\FPT\Fall24\EXE211\code\ByteBiz\Repositories\bin\Debug\net8.0\BusinessObjects.pdb
+D:\FPT\Fall24\EXE211\code\ByteBiz\Repositories\bin\Debug\net8.0\DataAccess.pdb
+D:\FPT\Fall24\EXE211\code\ByteBiz\Repositories\obj\Debug\net8.0\Repositories.csproj.AssemblyReference.cache
+D:\FPT\Fall24\EXE211\code\ByteBiz\Repositories\obj\Debug\net8.0\Repositories.GeneratedMSBuildEditorConfig.editorconfig
+D:\FPT\Fall24\EXE211\code\ByteBiz\Repositories\obj\Debug\net8.0\Repositories.AssemblyInfoInputs.cache
+D:\FPT\Fall24\EXE211\code\ByteBiz\Repositories\obj\Debug\net8.0\Repositories.AssemblyInfo.cs
+D:\FPT\Fall24\EXE211\code\ByteBiz\Repositories\obj\Debug\net8.0\Repositories.csproj.CoreCompileInputs.cache
+D:\FPT\Fall24\EXE211\code\ByteBiz\Repositories\obj\Debug\net8.0\Reposito.787EC4B2.Up2Date
+D:\FPT\Fall24\EXE211\code\ByteBiz\Repositories\obj\Debug\net8.0\Repositories.dll
+D:\FPT\Fall24\EXE211\code\ByteBiz\Repositories\obj\Debug\net8.0\refint\Repositories.dll
+D:\FPT\Fall24\EXE211\code\ByteBiz\Repositories\obj\Debug\net8.0\Repositories.pdb
+D:\FPT\Fall24\EXE211\code\ByteBiz\Repositories\obj\Debug\net8.0\ref\Repositories.dll
